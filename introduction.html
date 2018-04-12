@@ -2,22 +2,63 @@
 <html>
 <head>
 	<title>Code Samples Repo</title>
+
+	<!-- Meta Info -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Bootstrap CDN -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+	/* Color Scheme:
+		Faded Black: #fff2e7;
+		Faded Red: #e05151;
+		No-Fade Red: #d9411e;
+		Mid-Fade Yellow: #ffd452;
+		Light Blue: #75a3d1;
+		Ivory: #fffff0;
+	*/
+		body{
+			font-family: 'Roboto', sans-serif;
+			background:#333;
+			color:#fff2e7;}
+		a{
+			color:#e05151;
+			transition-duration: 0.3s;}
+		a:hover{
+			color:#75a3d1;
+			transition-duration: 0.3s;}
+		ul > li{list-style-type: none;}
+			.links-list li {font-size:20px;}
+				.links-list li i{
+					/*padding:0px 3px;*/
+					/*background:#fffff0;*/
+					padding-right:10px;
+					color:#75a3d1;}
+
+	</style>
 </head>
 <body>
-	<h1>Code Samples Repo Introduction</h1>
-	<h2>Author: Brian Wardwell</h2>
-	<!-- <h3>Developer Portfolio: <a href="http://brianwardwell.com" title="Brian Wardwell Portfolio">Brian Wardwell (Portfolio)</a></h3> -->
-	<h3><a href="http://brianwardwell.com" title="Brian Wardwell Portfolio">My Portfolio</a></h3>
-	<img src="https://avatars1.githubusercontent.com/u/15736213?s=460&v=4"/>
+	<div class="container">
+		<h1>Code Samples Repo Introduction</h1>
+		<h2>Author: Brian Wardwell</h2>
+		<h3><a href="http://brianwardwell.com" title="Brian Wardwell Portfolio">My Portfolio</a></h3>
+		<img src="https://avatars1.githubusercontent.com/u/15736213?s=460&v=4"/>
 
-	<p><strong>Introduction:</strong></p>
-	<p>The purpose of this repository is to make code available and demonstrate coding in a variety of languages, as well as a few visual design examples. This repository is an extension of my <a href="http://brianwardwell.com" title="Brian Wardwell's Portfolio">portfolio</a>, which was developed within the <a href="https://laravel.com" title="Laravel" target="_blank">Laravel</a> PHP MVC Framework.
-	<p>Languages Included</p>
-	<ul>
-		<li>PHP</li>
-		<li>CSS</li>
-		<li>JavaScript</li>
-	</ul>
-
+		<p><strong>Introduction:</strong></p>
+		<p>The purpose of this repository is to make code available and demonstrate coding in a variety of languages, as well as a few visual design examples. This repository is an extension of my <a href="http://brianwardwell.com" title="Brian Wardwell's Portfolio">portfolio website</a>, which was developed within the <a href="https://laravel.com" title="Laravel" target="_blank">Laravel</a> PHP MVC Framework.</p>
+		<p>Languages Included</p>
+		<ul class="links-list">
+			<li><i class="fa fa-link"></i>PHP</li>
+			<li><i class="fa fa-link"></i>CSS</li>
+			<li><i class="fa fa-link"></i>JavaScript</li>
+		</ul>
+	</div>
+	<!-- jQuery and Bootstrap scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
