@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--	Author: Brian Wardwell
+		Date:	November 26th, 2014
+		File:	softWareOrder.html
+		Purpose: Chapter 13 Exercise
+-->
+
+<html>
+<head>
+	<title>SaveTheWorld Software</title>
+	<link rel ="stylesheet" type="text/css" href="sample.css" >
+</head>
+
+<body>
+<h1>SaveTheWorld: Order Form</h1>
+<p>To order <strong>SaveTheWorld</strong>, please complete the following order form: </p>
+
+<p>
+	<form action = "softwareOrder.php" method = "post" >
+
+		<p>Choose your operating system:
+			<select name = "os">
+			<option>Linux</option>
+			<option>Macintosh</option>
+			<option>Windows</option>
+			</select>
+		</p>
+		<p>Number of copies:
+		<input type = "text" size = "5" name = "numCopies" >
+		</p>
+		<p>
+		<input type = "submit" value = "Submit Your Order" >
+		</p>
+</form>
+</body>
+</html>

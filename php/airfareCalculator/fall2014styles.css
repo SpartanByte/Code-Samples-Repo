@@ -1,0 +1,152 @@
+/*
+	Author: Brian Wardwell
+	Date: December 17th, 2014
+	Fall 2014 Portfolio Update
+	Description: CSS Styles for Portfolio Update
+	NOTE: This SCSS (SASS) file is being used as a "bandaid" to style new files until I can redesign. 
+	
+*/
+/* SASS VARIABLES: ***** These variable assignments extend until "End Of Variables" */
+/* Border Variables (chunk of four) */
+/* END OF VARIABLES **** SASS VARIABLES ENDING */
+body {
+  background-image: url(../images/blur.jpg);
+  color: white; }
+  body a {
+    color: #D00000; }
+
+/* START OF NAVIGATION STYLES */
+#fallNav {
+  list-style: none;
+  background-color: #000000;
+  text-align: center;
+  line-height: 40px;
+  padding-bottom: 40px;
+  border: 2px solid white;
+  border-radius: 10px; }
+  #fallNav li {
+    color: white;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.2em;
+    background-color: #000000;
+    width: 20%;
+    float: left; }
+  #fallNav a {
+    text-decoration: none;
+    color: white;
+    transition: .3s background-color;
+    padding: 10px;
+    transition: .3s padding; }
+  #fallNav a:hover {
+    background-color: #680000;
+    border: 2px solid white;
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 1px 24px 0px rgba(255, 255, 255, 0.8);
+    -moz-box-shadow: 3px 1px 24px 0px rgba(255, 255, 255, 0.8);
+    box-shadow: 3px 1px 24px 0px rgba(255, 255, 255, 0.8); }
+  #fallNav a.active {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #C8C8C8; }
+
+/* END OF NAVIGATION STYLES */
+/* START OF FOOTER STYLES */
+#fallFooter {
+  border: 2px solid white;
+  border-radius: 10px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Oswald", sans-serif;
+  font-size: 1em;
+  margin-top: 20px; }
+  #fallFooter a:hover {
+    padding: 5px;
+    color: white;
+    background-color: #680000;
+    border: 2px solid white;
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 1px 24px 0px rgba(255, 255, 255, 0.8);
+    -moz-box-shadow: 3px 1px 24px 0px rgba(255, 255, 255, 0.8);
+    box-shadow: 3px 1px 24px 0px rgba(255, 255, 255, 0.8); }
+
+/* END OF FOOTER STYLES */
+/* PHP and MySQL Animation */
+#ani_1 {
+  color: 000000;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 30p%;
+  position: relative;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 10px;
+  animation: ani_1 3s;
+  animation-iteration-count: 1;
+  animation-delay: -1s;
+  margin: 10px; }
+
+#ani_2 {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 30p%;
+  position: relative;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 10px;
+  animation: ani_1 3s;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  margin: 10px; }
+
+#welcome-wrap {
+  background-color: #FFFFFF;
+  padding: 50px;
+  animation: welcome-wrap 3s ease-in-out;
+  animation-delay: -3s;
+  animation-iteration-count: 1; }
+
+@keyframes ani_1 {
+  0% {
+    margin-left: 200%;
+    width: 200%;
+    background-color: #180000; }
+
+  100% {
+    margin-left: 0%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5); } }
+/* ASSIGNMENT NAVIGATION for assignments.php */
+#hwNav {
+  padding: 0;
+  width: 50%;
+  list-style: none;
+  background-color: #000000;
+  text-align: center;
+  line-height: 40px;
+  padding-bottom: 40px;
+  border: 2px solid white;
+  border-radius: 10px; }
+  #hwNav li {
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-family: "Oswald", sans-serif;
+    font-size: 1em;
+    width: 100%; }
+  #hwNav a {
+    text-decoration: none;
+    transition: .3s background-color; }
+  #hwNav a:hover {
+    color: white;
+    background-color: #680000;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 5px; }
+  #hwNav a.active {
+    color: #C8C8C8; }
+  #hwNav p {
+    font-size: 1em; }
+
+#oldLinks {
+  list-style: none;
+  font-weight: bold; }
