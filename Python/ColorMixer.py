@@ -1,5 +1,5 @@
 # Brian Wardwell
-# Python - Color Mixer
+# Python Color Mixer
 # This program asks the user to enter two primary colors to mix.
 # The program then either displays the secondary color or an error
 # message if anything but the three primary colors "red", "yellow",
