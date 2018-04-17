@@ -1,0 +1,44 @@
+/* Date: 4/17/2018 */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body{
+	font-family: 'Roboto', sans-serif;
+	background:#696969;}
+
+h1{text-align:center;}
+.smile-character{font-size:20px;}
+.fa-exclamation{font-color:red;}
+.red-text{color: #800000;}
+
+.slideshow-container{
+	width:640px;
+	margin:auto;
+	display:block;
+	color:#fff;
+	text-align:center;}
+
+#slideshow img{
+	background:transparent;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	border-bottom: none;}
+
+#pause, #resume{
+	display:block;
+	cursor:pointer;
+	padding:10px;
+	background:#252525;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+	transition-duration: 0.3s;}
+	#pause:hover, #resume:hover{
+		background:grey;
+		display:block;
+		transition-duration: 0.3s;}
+
+.fa-pause.control, .fa-play.control{
+	padding:3px;
+	font-size:2rem;}
+.control-label{
+	padding:0 20px;
+	text-transform:uppercase;
+	font-size:2rem;}

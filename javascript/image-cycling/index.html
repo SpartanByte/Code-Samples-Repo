@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--Author: Brian Wardwell
+	Original Date: September 22nd, 2014
+	Updated: 4/17/2018
+	File Description: Interactive Slideshow with jQuery
+	File Name: index.html
+-->
+<html lang="en">
+	<head>
+	<title>Image Cycling</title>
+		<!--Updated to the most recent jQuery library: jQuery 1.11.1-->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script type="text/javascript" src="jquery_cycle.js"></script>
+	    <script type="text/javascript" src="rotate.js"></script> 
+	    <link href="css/styles.css" rel="stylesheet">
+	    
+	    <!-- get Font Awesome for controls -->
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<h1>jQuery Image Cycling <i class="fa fa-exclamation red-text"></i></h1>
+		<div class="slideshow-container">
+	        <div id="slideshow"><!-- Updated images to California images, resized to 640x480 to closer meet the original 640x428 -->
+	          <img src="images/california01.jpg" />
+	          <img src="images/california02.jpg" />
+	          <img src="images/california03.jpg" />
+	          <img src="images/california04.jpg" />
+	          <img src="images/california05.jpg" />
+	          <img src="images/california06.jpg" />
+	        </div>
+	    </div>
+	</body>
+</html>
