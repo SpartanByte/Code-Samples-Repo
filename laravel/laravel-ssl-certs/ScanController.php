@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Services\SSL\CertCheckerService;
-// use App\Services\SSL\RunScanService;
 use App\Console\Commands\ScanAllDomains;
 use App\Models\Domain;
 use App\User;
@@ -35,10 +34,9 @@ class ScanController extends Controller
 
         // $domainsArray = $allDomainsArray->command('domain:all');
         $domainsArray = [];
-        // $domainsArray = Artisan::call('domain:all');
+        // calls old Kernal/Artisan command php artisan domain:scan
         $domainsArray = Artisan::call('domain:scan');
 
-
-         return view("scan-test")->with(compact('domainsArray', 'reportDate'));
+        return view("scan-test")->with(compact('domainsArray', 'reportDate'));
     }
 }

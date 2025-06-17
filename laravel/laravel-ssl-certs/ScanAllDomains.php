@@ -18,7 +18,8 @@ class ScanAllDomains extends Command
      * Command Name
      * @var string
      */
-            protected $signature = 'domain:all';
+    protected $signature = 'domain:all';
+
     /**
      * Command Description
      * @var string
@@ -34,11 +35,8 @@ class ScanAllDomains extends Command
     {
 
         // Getting domain URLs from Database 
-        //$domainURLS = DB::table('domains')->select('domain')->get();
         $domains = Domain::all();
         $allScans = [];
-
-       
 
         foreach($domains as $domain){
 
@@ -53,10 +51,10 @@ class ScanAllDomains extends Command
             // requesting ssl certificate info
             $certInfo = curl_getinfo($curl, CURLINFO_CERTINFO);
 
-                    // Checking for errors, this has been tested with an http address
-                    // if(!isset($certInfo[0]['Issuer'])){
-                    //    $this->info("<fg=red;options=underscore>This domain does not have a valid SSL certificate. </>");
-                    // }
+            // Checking for errors, this has been tested with an http address
+            if(!isset($certInfo[0]['Issuer'])){
+                $this->info("<fg=red;options=underscore>This domain does not have a valid SSL certificate. </>");
+            }
 
             // Regular expressions
             $certificate = $certInfo[0];
@@ -66,39 +64,15 @@ class ScanAllDomains extends Command
             // return $certInfo;
             $certDateIssued = $certInfo[0]['Start date'];
             $certExpiration = $certInfo[0]['Expire date'];
-            
-            // // date/time
-            // $now = Carbon::now();
-            // $expiring = new Carbon($certExpiration);
-            // $daysRemaining = $now->diffInDays($expiring);
 
-            //         // Is the certificate valid?
-            //         if($daysRemaining > 0){
-            //             $status = "Valid";
-            //         } else{
-            //             $status = "Expired";
-            //         } 
-
-            // // Formatting 
+            // Formatting 
             $certDateIssued = date("Y-m-d", strtotime($certDateIssued));
             $certExpiration = date("Y-m-d", strtotime($certExpiration));
 
             date_default_timezone_set("America/Chicago");
             $reportDate = date("m/d/Y g:ia");
             
-            // // building certInfoArray with values
-            // $certInfoArray = array(
-            //     "domainName" => $domain->domain,
-            //     "certPort" => $certPort,
-            //     "clientName" =>  $clientName,
-            //     "certIssuer" => $certIssuer,
-            //     "certDateIssued" => $certDateIssued,
-            //     "certExpiration" => $certExpiration,
-            //     "status" => $status,
-            //     "daysRemaining" => $daysRemaining,
-            //     "reportDate" => $reportDate,
-            // );
-
+            // encode the JSON and create scan
             $scan = new Scan;
 
             $scan->raw = json_encode($certInfo[0]);
@@ -106,9 +80,8 @@ class ScanAllDomains extends Command
             $scan->start = $certDateIssued;
             $scan->expire = $certExpiration;
             $scan->domain_id = $domain->id;
+            $scan->report_date = $reportDate;
             $scan->save();
-}
-
         }
-
+    }
 }

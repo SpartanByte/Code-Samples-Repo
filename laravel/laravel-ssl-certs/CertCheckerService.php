@@ -32,7 +32,7 @@ class CertCheckerService{
 		$certExpiration = $certInfo[0]['Expire date'];
 
 		
-		$clientName = "Insight Technologies";
+		$clientName = "Any Company";
 
 		// date/time
 		$now = Carbon::now();
@@ -75,10 +75,4 @@ class CertCheckerService{
 		}
 		return $urlArray;
 	}
-
-	// public function getCurl(){
-
-	// 	$curlArray[] = getCertInfo($url);
-	// 	return $curlArray;
-	// }
 }

@@ -17,15 +17,21 @@ class CertController extends Controller
 	    $domainsList = new CertCheckerService;
 	    $certInfoArray = $domainsList->getCertInfo();
 
-	   //  // Formatting Issued Date to Y-m-d
-    //             $issueDate = $certInfoArray[2];
-    //             $issueDate = date("Y-m-d", strtotime($issueDate));
-	   //  // Formatting Expiration Date to Y-m-d
-	   // $expirationDate = $certInfoArray[3];
-    //            $expirationDate = date("Y-m-d", strtotime($expirationDate));
-    //            // Trimming Issuer string to the Organization ("O") only
-    //             $issuer = $certInfoArray[1];
-    //             $issuer = substr($issuer, 12, 12); 
+	    // passing certInfoArray (generated from CertCheckerService) to view
+	    return view("ssl-test")->with(compact('certInfoArray'));
+
+		/**
+		 * Older code for examples
+		 */
+		// Formatting Issued Date to Y-m-d
+    	// $issueDate = $certInfoArray[2];
+    	// $issueDate = date("Y-m-d", strtotime($issueDate));
+	   	// Formatting Expiration Date to Y-m-d
+	   	// $expirationDate = $certInfoArray[3];
+    	// $expirationDate = date("Y-m-d", strtotime($expirationDate));
+		// Trimming Issuer string to the Organization ("O") only for testing
+    	// $issuer = $certInfoArray[1];
+		// $issuer = substr($issuer, 12, 12); 
 
 	    // $domainName = "https://example.com";
 	    // $clientName = "The Example Company";
@@ -41,9 +47,6 @@ class CertController extends Controller
 	    // } else {
 	    // 	$status = "Expired";
 	    // }
-	    
-	    // passing certInfoArray (generated from CertCheckerService) to view
-	    // return view('ssl-test')->with(compact( 'certInfoArray', 'expirationDate', 'issueDate', 'issuer', 'daysRemaining', 'now', 'expiring', 'status'));
-	    return view("ssl-test")->with(compact('certInfoArray'));
+		// return view('ssl-test')->with(compact( 'certInfoArray', 'expirationDate', 'issueDate', 'issuer', 'daysRemaining', 'now', 'expiring', 'status'));
     }
 }
