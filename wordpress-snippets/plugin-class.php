@@ -22,7 +22,7 @@ if ( ! class_exists( 'GFProductInfoFields' ) ) {
 
         // Add product meta boxes for input
         public function add_product_meta_box( $meta_boxes, $entry, $form ) {
-            $meta_boxes['gf_product_info'] = [
+            $meta_boxes[ 'gf_product_info' ] = [
                 'title'    => 'Product Info',
                 'callback' => [ $this, 'render_meta_box' ],
                 'context'  => 'side',
@@ -32,7 +32,7 @@ if ( ! class_exists( 'GFProductInfoFields' ) ) {
         }
 
         public function save_product_fields( $form, $entry_id ) {
-            if ( ! isset( $_POST['gf_product_name'] ) && ! isset( $_POST['gf_product_sku'] ) ) {
+            if ( ! isset( $_POST['gf_product_name'] ) && ! isset( $_POST[ 'gf_product_sku' ] ) ) {
                 return;
             }
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'GFProductInfoFields' ) ) {
         }
 
         public function render_meta_box( $args ) {
-            $entry = $args['entry'];
+            $entry = $args[ 'entry' ];
             $product_name = rgar( $entry, 'product_name' );
             $product_name = rgar( $entry, 'product_sku' );
             ?>
