@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/* Color Variables */
+$color-primary: orange;
+$color-secondary: gray;
+$color-tertiary: royalblue;
+$color-dark: #363636;
+$color-light: #fff;
+
+/* Fonts */
+$roboto: 'Roboto', sans-serif;
+$openSans: 'Open Sans', sans-serif;
+
+/* Font Size Variables */
+$font-lg: 40px;
+$font-md: 30px;
+$font-sm: 20px;
+
+/* Padding */
+$standardPadding: 20px;
+$topGridHeight: 75px;
+
+.main-wrapper p{
+	text-align:center;
+	font-size: fontSize($font-sm);
+	font-family: $openSans;
+}
+
+.nav{
+	display:block;
+	background:red;
+	ul{
+		background: $color-dark;
+		height: $topGridHeight;
+
+	}
+	ul li {
+		background: $color-dark;
+		list-style: none;
+		max-width:200px;
+		z-index: 99;
+		float:left;
+		padding: $standardPadding;
+		
+	}
+	a{
+		text-decoration: none;
+		font-size: $font-sm;
+		font-family: $roboto;
+		color: $color-light;
+		vertical-align: middle;
+		&:hover{
+			color: $color-tertiary;
+		}
+	}
+}
+
+.heading{
+	color: $color-primary;
+	font-family: $roboto;
+	font-size: $font-lg;
+	text-align:center;
+}
+
+@function fontSize($size){
+	@return $size * 2;
+}
+
+.banner h1{
+	@extend .heading;
+
+	&:hover{
+		background:green;
+	}
+}
+
+.footer{
+	h3{
+		@extend .heading;
+	}
+}
+
+
+.banner p{
+	font-size: fontSize($font-sm);
+	font-family: $openSans;
+}
