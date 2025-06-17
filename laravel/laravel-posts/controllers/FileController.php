@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use Image;
 
 
-    /**
-     * ==== MAKING SURE THIS IS NO LONGER BEING USED BEFORE REMOVING
-     */
+/**
+ * ==== MAKING SURE THIS IS NO LONGER BEING USED BEFORE REMOVING
+ */
 class FileController extends Controller {
     public function getResizeImage()
     {
@@ -20,15 +20,17 @@ class FileController extends Controller {
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
+
+        // get file, set filename and create the thumbs
         $photo = $request->file('photo');
         $imagename = time().'.'.$photo->getClientOriginalExtension(); 
-   
         $destinationPath = public_path('/thumbnail_images');
         $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
         $thumb_img->save($destinationPath.'/'.$imagename,80);
                     
         $destinationPath = public_path('/normal_images');
         $photo->move($destinationPath, $imagename);
+
         return back()
             ->with('success','Image Upload successful')
             ->with('imagename',$imagename);
@@ -38,6 +40,7 @@ class FileController extends Controller {
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
+        
         $thisImage = $request->file('photo');
         $pictureName = time().'.'.$photo->getClientOriginalExtension();
 

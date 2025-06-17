@@ -40,7 +40,7 @@ class PostController extends Controller
         $post->title = $postTitle;
         $post->body = $postBody;
         $post->descriptions = $postDescription;
-        // $post->author = $postAuthor;
+        $post->author = $postAuthor;
         // saving input to new post record
         $post->save();
 
@@ -55,7 +55,7 @@ class PostController extends Controller
          return view('admin.show')->with(compact('post'));
     }
 
-    // Still working on this function for public view
+    // Still working on this method for public view
     public function showPost($id)
     {
         // shows individual post
@@ -97,6 +97,9 @@ class PostController extends Controller
         $today = Carbon::now()->format('l, F jS Y');
         $posts = Post::all();
         return view('admin.home')->with(compact('posts', 'today'));
-        // return redirect()->route('admin/home');
+        /* 
+            redirect() can also be used
+            return redirect()->route('admin/home')->with(compact('posts', 'today'));
+        */
     }
 }
