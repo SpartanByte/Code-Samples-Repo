@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+	var backgroundImage = Umbraco.Media(CurrentPage.backgroundImage);
+}
+	<div id="main-container" class="row" style="background-image:url('@backgroundImage.Url')">
+		<div class="row pad-10">
+			<h1 class="main-header home-header">
+
+					<span class="orange-text">Umbraco Span Example</span>
+				</span>
+			</h1>
+
+			@{Html.RenderPartial("Home - Section One"); } 
+		</div>
+
+
+
+		<div class="crew-grid">
+			@{Html.RenderPartial("Home - Section Two"); } 
+		</div>
+
+
+		<!--@Html.Raw(CurrentPage.imageBlocks)-->
+	</div>
+
+@section AdditionalScripts { }

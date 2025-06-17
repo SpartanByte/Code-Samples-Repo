@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	int x = 0;
+	var projects = Umbraco.Content(1154).Children().Where("Visible");
+}
+@if(projects.Any()) {
+	<div class="home-work">
+		<div class="table-row">
+		@foreach(var project in projects.Take(5)) {
+			List<string> tags = new List<string>(project.projectTags.Split(','));
+			<article class="col-15 work-gallery-module grey-gradient">
+				<a href="@project.Url">
+					<span class="work-header">@project.projectClient</span>
+					<img src="@Umbraco.Media(project.thumbnail).Url?width=440&mode=crop&format=jpg&quality=75">
+					<div class="info-panel">
+						<h3>@project.Name</h3>
+						<p>@Html.Raw(String.Join("</p><p>", tags.ToArray()))</p>
+					</div>
+				</a>
+			</article>
+			x++;
+			if(x != 3) {
+				@Html.Raw("<div class=\"space\"></div>")
+			} else {
+				@Html.Raw("</div><div class=\"table-row\">")
+				x = 0;
+			}
+		}
+
+			<article class="col-15 work-gallery-module more-work grey-gradient">
+				<p>See what else we've created?
+					<a href="/our-work" class="red-button">More Work</a>
+				</p>
+			</article>
+		</div>
+	</div>
+}

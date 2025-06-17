@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+	string Text = Model.MacroParameters["Text"].ToString();
+	string Link = Model.MacroParameters["Link"].ToString();
+	string Background = Model.MacroParameters["Background"].ToString();
+
+	var backgroundImage = Umbraco.Media(Background);
+	if(Link != String.Empty) {
+		Link = " href=\"" + Link + "\"";
+	}
+}
+<div class="about-bottom" style="background-image:url('@backgroundImage.Url')">
+	<a class="about-bottom-text"@Html.Raw(Link)>
+		<p>@Html.Raw(Text)</p>
+	</a>
+</div>

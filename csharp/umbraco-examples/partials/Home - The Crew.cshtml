@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Umbraco.Web.Models;
+@{
+    var employees = Umbraco.Content(1358).Children().Where("Visible");
+}
+@if(employees.Any()) {
+	int x = 1;
+	<div class="table-row">
+	@foreach(var employee in employees.Take(4)) {
+		<a href="@employee.Url" class="col-50 crew-member">
+			<img src="@Umbraco.Media(employee.employeePhoto).Url" alt="@employee.Name"> 
+			<span class="crew-txt">
+				<strong>@employee.Name</strong>
+				<span>@employee.employeeJobTitle</span>
+			</span>
+		</a>
+		if(x % 2 == 0) {
+			@Html.Raw("</div><div class=\"table-row\">")
+		}
+		x++;
+	}
+	</div>
+} else {
+	<p>Sorry, there does not appear to be any projects at this time.</p>
+}

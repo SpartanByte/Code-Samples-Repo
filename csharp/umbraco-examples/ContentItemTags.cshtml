@@ -1,0 +1,30 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+}
+@* This is a Razor template under the "Master" master page *@
+
+@if (Model.Content.HasValue("reviewTags"))
+{
+    var tagList = Umbraco.Field("reviewTags").ToHtmlString().Split(',');
+    <div class="title-panel">
+        <h3>Tagged Items</h3>
+    </div>
+    <div class="latest-updates">
+        <div>
+            <ul>
+                @foreach(var tag in tagList)
+                {
+                    <li>
+                        <a href="/tags?tag=@tag" title="Get content tagged with @tag">@tag</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a href="/tags" title="View Tagged Content">Browse Tags</a></li>
+            </ul>
+        </div>
+    </div>
+}

@@ -1,0 +1,42 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@* grab the tag parameter form the URL's query string and search for matching content *@
+
+@{
+    string tag = Request.QueryString["tag"];
+    
+    if(!tag.IsNullOrWhiteSpace())
+    {
+        var publishedContent = Umbraco.TagQuery.GetContentByTag(tag);
+        
+        @* if there are any matches at all from Umbraco's backend *@
+        if(publishedContent.Count() > 0)
+        {
+            foreach(var item in publishedContent.OrderByDescending(i => i.CreateDate))
+            {
+                <div class="row">
+                    <div class="large-8 large=centered columns">
+                        <section class="text-center">
+                            <a href="@item.Url">
+                                <h2>@item.GetPropertyValue("Headline")</h2>
+                            </a>
+                            <span>@item.CreateDate</span>
+                        </section>
+                    </div>
+                </div>
+            }
+        } else {
+            <div class="row">
+                <div class="small-12 columns">
+                    <p>There isn't any content matching that tag.</p>
+                </div>
+            </div>
+
+            @Html.CachedPartial("TagList", Model.Content, 86400000)
+        }
+        
+    } else {
+        @Html.CachedPartial("TagList", Model.Content, 86400000)
+    }
+    
+}
