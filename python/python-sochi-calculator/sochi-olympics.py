@@ -6,7 +6,7 @@ def main():
     #Print program name
     print("Welcome to Sochi Olympic Pro: CST Version.")
     print("Author: Brian Wardwell")
-    print("Created: February 12th, 2014")
+    print("Created: February 12th, 2024")
     print("Go USA!!!")
 
     # Moved the start() function call up to here instead of at the very end after main()
@@ -40,12 +40,7 @@ def start():
         # we need to set the am_or_pm value to pm.
         am_or_pm = 'PM'
 
-        # Edited below line:
-        # I added in another comma field and put the am_or_pm value
-        # If you are using the newest version of python 3.3, you will
-        # need to put the () around everything after the word print.
-        # I installed 2.8 this time around and its like the following
-        # line of code.
+    # Make sure to keep another comma field and put the am_or_pm value
     print('It is currently:', sochi_zone, am_or_pm, 'in Sochi, Russia')
     print('Thank you for using Sochi Olympic Calculator Pro: Version 1.1 (CST)')              
 
