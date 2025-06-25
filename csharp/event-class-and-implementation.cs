@@ -37,3 +37,50 @@ namespace EventManagement
         }
     }
 }
+
+// Demonstrate implementation and usage of the Event class
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        /// First Event usage example: Concert
+
+        // Create a DateTime object for the event date.
+        // Using a specific date and time for demonstration.
+        DateTime concertDate = new DateTime(2025, 10, 26, 19, 0, 0); // October 26, 2025, 7:00 PM
+
+        // Instantiate the class for a concert (uses the constructor)
+        Event minneapolisConcert = new Event(
+            eventName: "Rock & Roll Band Example",
+            eventDate: concertDate,
+            venue: "First Avenue",
+            city: "Minneapolis",
+            state: "MN"
+        );
+
+        // --- Populating other properties using the instantiation ---
+        minneapolisConcert.Description = "An epic night of classic rock hits!";
+        minneapolisConcert.TicketPrice = 45.99m;
+
+        /// Display output
+        Console.WriteLine("--- Concert Details ---");
+        Console.WriteLine(minneapolisConcert.ToString());
+        Console.WriteLine("\n---------------------\n");
+
+        /// Second Event usage example: Code Clinic
+
+        // --- Creating another event with different properties ---
+        DateTime codeClinicDate = new DateTime(2025, 11, 15, 9, 30, 0); // November 15, 2025, 9:30 AM
+
+        Event codingClinic = new Event(
+                eventName: "C# Fundamentals Clinic",
+                eventDate: codeClinicDate,
+                venue: "Community Center - Room 301",
+                city: "St Paul",
+                state: "MN"
+        );
+        
+        codingWorkshop.Description = "A hands-on workshop to learn the basics of C# programming.";
+        codingWorkshop.TicketPrice = 129.00m;
+    }
+}
