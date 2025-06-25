@@ -31,9 +31,7 @@ namespace EventManagement
                    $"Date: {EventDate.ToShortDateString()} at {EventDate.ToShortTimeString()}\n" +
                    $"Location: {Venue}, {City}, {State}\n" +
                    $"Description: {Description}\n" +
-                   $"Ticket Price: {TicketPrice:C}\n" + // :C formats as currency
-                   $"Capacity: {(MaxCapacity > 0 ? MaxCapacity.ToString() : "Unlimited")}\n" +
-                   $"Public Event: {IsPublic}";
+                   $"Ticket Price: {TicketPrice:C}\n"; // Note: :C formats as currency
         }
     }
 }
@@ -79,8 +77,19 @@ public class Program
                 city: "St Paul",
                 state: "MN"
         );
-        
-        codingWorkshop.Description = "A hands-on workshop to learn the basics of C# programming.";
-        codingWorkshop.TicketPrice = 129.00m;
+
+        codingClinic.Description = "A hands-on workshop to learn the basics of C# programming.";
+        codingClinic.TicketPrice = 129.00m;
+
+        /// Display output
+        Console.WriteLine("--- Coding Clinic Details ---");
+        Console.WriteLine(codingClinic.ToString());
+        Console.WriteLine("\n---------------------\n");
+
+        /// To modify an event property
+        Console.WriteLine("Modifying 'Rock & Roll Revival' ticket price...");
+        codingClinic.TicketPrice = 139.99m; // Late registration price
+        /// use string interpolation for its direct and readable syntax
+        Console.WriteLine($"New Ticket Price for {codingClinic.EventName}: {codingClinic.TicketPrice:C}");
     }
 }
