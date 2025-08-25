@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM API Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">AI Text Generator Sample</h1>
+
+        <!-- Input for the user's prompt -->
+        <div class="mb-4">
+            <label for="prompt-input" class="block text-gray-700 font-semibold mb-2">Enter your prompt:</label>
+            <textarea
+                id="prompt-input"
+                class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
+                rows="4"
+                placeholder="E.g., Write a short, funny story about a robot trying to bake a cake."
+            ></textarea>
+        </div>
+        
+        <!-- Button to trigger the API call -->
+        <div class="flex justify-center mb-6">
+            <button
+                id="generate-btn"
+                class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+                Generate
+            </button>
+        </div>
+
+        <!-- Section to display the generated response -->
+        <div id="response-container" class="bg-gray-50 p-6 rounded-lg border border-gray-200 transition duration-200">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Generated Response:</h2>
+            <div id="loading-indicator" class="hidden text-center text-indigo-500">
+                <svg class="animate-spin h-5 w-5 mr-3 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                Generating...
+            </div>
+            <p id="response-output" class="text-gray-600 whitespace-pre-wrap"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            // Get the user's prompt from the textarea.
+            const userPrompt = document.getElementById('prompt-input').value;
+            const responseOutput = document.getElementById('response-output');
+            const loadingIndicator = document.getElementById('loading-indicator');
+
+            // Clear previous output and show loading indicator.
+            responseOutput.textContent = '';
+            loadingIndicator.classList.remove('hidden');
+
+            try {
+                // Prepare the payload for the API call.
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: userPrompt }] });
+                const payload = { contents: chatHistory };
+                
+                const apiKey = ""; // API key is automatically provided by the Canvas environment.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                // Make the API request with exponential backoff for retries.
+                const response = await fetchWithExponentialBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                // Check for a valid response structure and extract the generated text.
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    responseOutput.textContent = text;
+                } else {
+                    responseOutput.textContent = 'Error: No response from the model or unexpected data format.';
+                }
+            } catch (error) {
+                console.error('Error making the API call:', error);
+                responseOutput.textContent = `An error occurred: ${error.message}`;
+            } finally {
+                // Hide the loading indicator.
+                loadingIndicator.classList.add('hidden');
+            }
+        });
+
+        // Helper function for exponential backoff retries.
+        async function fetchWithExponentialBackoff(url, options, retries = 5, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response;
+                    }
+                    if (response.status === 429) { // Too Many Requests
+                        console.log(`Rate limited. Retrying in ${delay / 1000} seconds...`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2; // Exponentially increase delay
+                    } else {
+                        // For other non-429 errors, throw an error to exit the loop.
+                        throw new Error(`API returned status ${response.status}`);
+                    }
+                } catch (error) {
+                    if (i === retries - 1) throw error; // Re-throw on last retry
+                    console.log(`Fetch failed. Retrying in ${delay / 1000} seconds...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
