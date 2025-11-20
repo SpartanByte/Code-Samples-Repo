@@ -1,7 +1,7 @@
 # Brian Wardwell
 # This program asks the user to enter the for monthly incurred from
 # operating their automobile.
-# This program should run the calculations and display the information as well as the total
+# This program runs the calculations and displays the information as well as the total
 
 # main def
 def main():
@@ -14,7 +14,6 @@ def main():
     # Get monthly sales total
     totalSales = float(input("Enter total sales of current month: $ "))
 
-
     # Calculate total
     stateTax = (totalSales * 0.04)
 
@@ -26,7 +25,6 @@ def main():
 
     # Print information by calling showTotal
     showTotal(stateTax, countyTax, total)
-
 
 # Showing inputed information and calculated total
 def showTotal(stateTax, countyTax, total):
