@@ -6,26 +6,19 @@ def main():
     #Print program name
     print("Welcome to Sochi Olympic Pro: CST Version.")
     print("Author: Brian Wardwell")
-    print("Created: February 12th, 2024")
     print("Go USA!!!")
 
     # Moved the start() function call up to here instead of at the very end after main()
     start()
 
 def start():
-    # To keep things as simple as possible for now and to show you only one new concept,
-    # have the user enter in military time here (aka 24 hour time)
     current_zone = float(input('Enter the time of event rounded to the nearest half hour, such as 2.5: '))
 
-    # Edit to existing code.  Removed the -12 at the end.
-    # I assume this was here to accomodate for times over 12:59
+    # Accomodate for times over 12:59
     sochi_zone = (float(current_zone + 10 - 12))
 
-    # New Code to determine if the time exceeds 23:59 and therefore need
+    # Determine if the time exceeds 23:59 and therefore need
     # to have 24 subtracted from it.
-    # This code line says If sochi_zone value is equal to or greater
-    # then 24, run the code that is indented below this line.
-    # (You will get to If statements in Chapter 4 I believe)
     if sochi_zone >= 24:
         # Subtract 24 from sochi_zone
         sochi_zone = sochi_zone - 24

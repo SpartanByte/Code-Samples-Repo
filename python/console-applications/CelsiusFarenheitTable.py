@@ -22,7 +22,6 @@ def main():
 main()
 """
 >>> 
-Deb Flaskerud
 Celsius		Fahrenheit
 ------------------------------------------
 0 		 32.0
