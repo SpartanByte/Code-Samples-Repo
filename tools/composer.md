@@ -1,5 +1,5 @@
 ### Composer Snippets and Commands
-![Composer Logo](/images/composer-logo.jpg "Composer Package Manager")
+![Composer Logo](/images/composer-logo.png "Composer Package Manager")
 
 ### Composer Install Related
 Running composer install locally and ignore PHP version use `--ignore-platform-reqs`
