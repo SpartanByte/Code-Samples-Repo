@@ -1,5 +1,5 @@
 # MySQL Queries: Quick Queries
-
+![MySQL Logo](/images/mysql-logo.png "MySQL Databases")
 ##### Basic Query for creating a record in a purchases table:
 
 ##### Simple SELECT statement:
@@ -25,3 +25,4 @@ VALUES (LAST_INSERT_ID(), 101, 2, 45.99);
 DELETE FROM users
 WHERE id = 123;
 ```
+
