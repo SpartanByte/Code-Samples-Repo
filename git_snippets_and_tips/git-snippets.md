@@ -1,6 +1,6 @@
 
 ### Git Snippets and Commands
-
+![Git Logo](/images/git-logo.png "Git Verson Control")
 ##### Git Configuration Settings
 
 When using Git and cloning repositories from Windows into a Linux environment (Virtualbox, WSL), you need to configure it to handle **EOL Conversion** to correctly clone.
@@ -12,5 +12,4 @@ vagrant@ubuntu-focal:/srv/www$ bin/cake migrations migrate
 ```
 Fix with this command
 **`git config --global core.autocrlf input`**
-
 ---

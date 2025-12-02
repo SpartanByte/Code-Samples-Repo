@@ -1,4 +1,5 @@
 ##### Mainly for use with Symfony projects
+![Twig Logo](/images/twig-logo.png "Twig Template Language")
 
 **Output variables and expressions**
 *Note `{{ ... }}` Displays contact in Twig like Laravel's Blade does*
