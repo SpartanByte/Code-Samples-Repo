@@ -1,5 +1,5 @@
+![Symfony Logo](/images/symfony-logo.png "Symfony PHP Framework")
 # Symfony Queries (in varying complexity)
-
 ##### Basic Query:
 **Note: Symfony uses the Query Builder that Laravel pulls in for Eloquent ORM**
 
