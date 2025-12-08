@@ -28,6 +28,7 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
     * **[[mysql/stub.md|MySQL]]**
         * [[mysql/quick_queries.md|Quick Queries]]
+        * [[mysql/ddl.md|DDL (Data Definition Language)]]
 
     * **[[nextjs/stub.md|Next.js]]**
         * [[nextjs/pages/api/events.ts|Pages API Events]]
