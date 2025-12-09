@@ -1,0 +1,55 @@
+/* Import GoogleFonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thaana:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.md-main-container{
+    background: #a2a8d3; 
+    padding-top: 5vw;
+    font-family: "Roboto", sans-serif;
+}
+
+.md-header h1{
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.md-main-container h1,
+.md-main-container h2,
+.md-main-container h3,
+.md-main-container h4,
+.md-main-container h5,
+.md-main-container h6{
+    font-weight:bold;
+}
+
+.md-main-container blockquote{
+    padding: 20px;
+}
+
+.md-main-container [data-role="codeBlock"] {
+  background-color: #f5f5f5; 
+  padding: 10px;
+  font-weight:bold;
+}
+
+/* Resources list at the bottom */
+.md-resources{
+    background: #113f67; 
+    color: #fff;
+    padding: 20px;
+}
+
+.md-resources h1,
+.md-resources h2,
+.md-resources h3,
+.md-resources h4,
+.md-resources h5,
+.md-resources h6{
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.md-resources a{
+    color: #fff;
+    font-size: 18px;
+}
