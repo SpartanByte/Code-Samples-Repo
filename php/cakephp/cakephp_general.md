@@ -24,3 +24,11 @@
 | `bin/cake bake controller`  | Generates basic Controller code (part of the powerful bake utility).   |
 | `bin/cake bake model <ModelName>`  | Generates the Entity and Table class files for your database tables.   |
 | `bin/cake routes`  | Lists all defined application routes.   |
+
+
+#### Example Commands
+**Create a Seeder**
+`bin/cake migrations seed create InitialUsersSeed`
+
+**Run a Seeder**
+`bin/cake migrations seed`
