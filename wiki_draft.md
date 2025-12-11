@@ -66,22 +66,65 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
 ---
 
-* **Official Documentation Resources**
-    * [[https://book.cakephp.org/5/en/index.html | CakePHP 5.x]]
-    * [[https://docs.docker.com/ | Docker ]]
-    * [[https://git-scm.com/book/en/v2 | Git ]]
-    * [[https://devdocs.io/javascript | JavaScript (DevDocs)]]
-    * [[https://laravel.com/docs/12.x/installation | Laravel 12.x ]]
-    * [[https://forge.laravel.com/docs/introduction | Laravel Forge ]]
-    * [[https://herd.laravel.com/docs/windows/getting-started/installation | Laravel Herd ]]
-    * [[https://cheatography.com/davechild/cheat-sheets/linux-command-line/ | Linux CLI Cheat Sheet]]
-    * [[https://nextjs.org/docs | Next.js]]
-    * [[https://www.php.net/manual/en/ | PHP Manual]]
-    * [[https://learning.postman.com/docs/introduction/overview | Postman API Platform]]
-    * [[https://learning.postman.com/docs/postman-cli/postman-cli-installation|Postman CLI]]
-    * [[https://react.dev/reference/react | React and React DOM]]
-    * [[https://symfony.com/doc | Symfony ]]
-    * [[https://assets.ubuntu.com/v1/d00791ae-ubuntu_cli_cheat_sheet_2025.pdf | Ubuntu Server CLI Cheat Sheet]]
-    * [[https://vuejs.org/guide/introduction | Vue.js]]
-    * [[https://wordpress.org/documentation | WordPress]]
+#### **Official Documentation Resources**
 
+<details>
+<summary>CMS Specific</summary>
+    
+* [[https://wordpress.org/documentation | WordPress]]
+* [[https://developer.adobe.com/commerce/docs/] | Magento Documentation (Adobe Commerce)]]
+* [[https://shopify.dev/docs] | Shopify Developer Docs]]
+    * [[https://shopify.dev/docs/api/shopify-cli] | Shopify CLI Project Developer Docs]]
+
+</details>
+
+<details>
+<summary>JavaScript (and frameworks/libraries)</summary>
+
+* [[https://devdocs.io/javascript | JavaScript (DevDocs)]]
+* [[https://nextjs.org/docs | Next.js]]
+* [[https://react.dev/reference/react | React and React DOM]]
+* [[https://vuejs.org/guide/introduction | Vue.js]]
+
+</details>
+
+<details>
+<summary>PHP</summary>
+
+* [[https://www.php.net/manual/en/ | PHP Manual]]
+* [[https://book.cakephp.org/5/en/index.html | CakePHP 5.x]]
+* [[https://laravel.com/docs/12.x/installation | Laravel 12.x ]]
+* [[https://symfony.com/doc | Symfony ]]
+
+</details>
+
+--- 
+
+<details>
+<summary>Environment</summary>
+
+* [[https://herd.laravel.com/docs/windows/getting-started/installation | Laravel Herd ]]
+* [[https://docs.docker.com/ | Docker ]]
+
+
+</details>
+
+<details>
+<summary>Servers</summary>
+
+* [[https://forge.laravel.com/docs/introduction | Laravel Forge ]]
+* [[https://cheatography.com/davechild/cheat-sheets/linux-command-line/ | Linux CLI Cheat Sheet]]
+* [[https://assets.ubuntu.com/v1/d00791ae-ubuntu_cli_cheat_sheet_2025.pdf | Ubuntu Server CLI Cheat Sheet]]
+
+
+</details>
+
+<details>
+<summary>Tools</summary>
+
+* [[https://learning.postman.com/docs/introduction/overview | Postman API Platform]]
+* [[https://learning.postman.com/docs/postman-cli/postman-cli-installation|Postman CLI]]
+* [[https://git-scm.com/book/en/v2 | Git ]]
+
+
+</details>
