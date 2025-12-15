@@ -21,3 +21,27 @@ public function findExpensiveProducts(float $minPrice): array
         ->getResult();
 }
 ```
+
+#### 📜 Migration Commands (Schema Updates)
+Symfony doesn't have a specific rollback option like Laravel does that will rollback the last migration, which is great in development. 😞
+
+**you can...**
+Look up the version name, example `DoctrineMigrations\Version20250208132645` or sometimes just `20250208132645` will work. 
+Then check the migrations list:
+```cli
+php bin/console doctrine:migrations:list
+```
+output should be similar to:
+` >> 20250208132645 (executed)`
+
+Now, to reset just that migration (in this case, in the Docker CLI)
+`php bin/console doctrine:migrations:version 20250208132645 --delete`
+Then rerun the migrate command
+`php bin/console doctrine:migrations:migrate`
+
+There is a **bit** of a workaround by specifically executing the `down()` and `up()` methods:
+```cli
+php bin/console doctrine:migrations:execute 20250208132645 --down
+php bin/console doctrine:migrations:execute 20250208132645 --up
+
+```
