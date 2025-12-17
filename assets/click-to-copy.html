@@ -62,6 +62,7 @@
     </style>
 
     <script>
+        const symbolsArray = ["apple", "banana", "cherry"];
         // Function to show a temporary copy message
         function showCopyMessage(elementId) {
             const messageElement = document.getElementById(elementId);
@@ -125,7 +126,7 @@
     <div class="emoji-page-container">
     <h1>Click Any Emoji to Copy</h1>
     <!-- Emoji Block-->
-    <h2>Arrows &amp; Dots</h2>
+    <h2>Arrows, Misc Symbols &amp; Dots</h2>
     <div class="emoji-list">
         <div class="emoji-container" onclick="copyEmoji('emoji1', 'message1')">
             <span id="emoji1" class="emoji">↩</span>
@@ -151,8 +152,22 @@
             <span id="emoji5" class="emoji">★</span>
             <span id="message5" class="message"></span>
         </div>
-    </div>
 
+        <div class="emoji-container" onclick="copyEmoji('emoji35', 'message35')">
+            <span id="emoji35" class="emoji">❂</span>
+            <span id="message35" class="message"></span>
+        </div>
+
+        <div class="emoji-container" onclick="copyEmoji('emoji36', 'message36')">
+            <span id="emoji36" class="emoji">✸</span>
+            <span id="message36" class="message"></span>
+        </div>
+
+        <div class="emoji-container" onclick="copyEmoji('emoji37', 'message37')">
+            <span id="emoji37" class="emoji">💀</span>
+            <span id="message37" class="message"></span>
+        </div>
+    </div>
     <!-- Emoji Block-->
     <h2>Hands &amp; Gestures</h2>
     <div class="emoji-list">
