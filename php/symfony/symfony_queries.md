@@ -45,3 +45,65 @@ php bin/console doctrine:migrations:execute 20250208132645 --down
 php bin/console doctrine:migrations:execute 20250208132645 --up
 
 ```
+
+---
+
+#### 🕵 Ways to Validate Form Submission Values
+#### Method 1: Through Constraints
+
+```php
+// always keep use statements in alphabetical order so it's well organized
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
+public function buildForm(FormBuilderInterface $builder, array $options): void
+{
+    $builder
+        ->add('firstName', TextType::class, [
+            'label' => new TranslatableMessage('First Name'),
+            'required' => true,
+            'row_attr' => [
+                'class' => 'col-12 col-md-6'
+            ],
+            'attr' => [
+                'autocomplete' => 'form-first-name',
+                'aria-required' => true,
+            ],
+            'constraints' => [
+                new NotBlank([
+                    'message' => new TranslatableMessage('Please enter your first name.'),
+                ]),
+            ],
+        ])
+}
+```
+#### Method 2: Using the Validator Interface
+
+```php
+use App\Entity\Author;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
+public function author(ValidatorInterface $validator): Response
+{
+    $author = new Author();
+
+    $errors = $validator->validate($author);
+
+    if (count($errors) > 0) {
+        /*
+         * Uses a __toString method on the $errors variable which is a
+         * ConstraintViolationList object. This gives us a nice string
+         * for debugging.
+         */
+        $errorsString = (string) $errors;
+
+        return new Response($errorsString);
+    }
+
+    return new Response('The author is valid! Yes!');
+}
+```
+
