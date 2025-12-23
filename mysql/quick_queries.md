@@ -1,5 +1,14 @@
+<link rel="stylesheet" href="https://portfolio.brianwardwell.com/code-samples-repo/style.css">
+
+<div class="md-main-container">
+<div class="md-header margin:0px;">
+
 # MySQL Queries: Quick Queries
 ![MySQL Logo](/images/mysql-logo.png "MySQL Databases")
+
+</div>
+<div class="md-content-container" style="padding: 50px">
+
 ##### Basic Query for creating a record in a purchases table:
 
 ##### Simple SELECT statement:
@@ -25,4 +34,21 @@ VALUES (LAST_INSERT_ID(), 101, 2, 45.99);
 DELETE FROM users
 WHERE id = 123;
 ```
+
+---
+
+<div class="md-resources">
+
+--- 
+
+### Great Resources
+
+- [🔗 GeeksForGeeks DDL tutorial](https://www.geeksforgeeks.org/sql/ddl-full-form/)
+- [🔗 Snowflake documentation: DDL](https://docs.snowflake.com/en/sql-reference/sql-ddl-summary)
+
+</div>
+
+</div>
+
+</div>
 
