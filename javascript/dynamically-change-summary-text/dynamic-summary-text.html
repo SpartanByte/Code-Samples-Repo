@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Dynamic Summary Text Example</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const detailsElement = document.getElementById("exampleDetailsElement");
+                const summaryElement = document.getElementById("exampleSummaryElement");
+
+                detailsElement.addEventListener("toggle", function() {
+                    if (detailsElement.open) {
+                        summaryElement.textContent = "Hide Example List";
+                    } else {
+                        summaryElement.textContent = "Show Example List";
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Simple Dynamic Summary Text</h1>
+        <details id="exampleDetailsElement">
+            <summary id="exampleSummaryElement">
+                <p>These are hidden details that appear when you open up the summary by clicking the details element.</p>
+                <ul>
+                    <li>Detail 1</li>
+                    <li>Detail 2</li>
+                    <li>Detail 3</li>
+                </ul>
+            </summary>
+        </details>
+        <div>
+            <h2>Explanation of JavaScript</h2>
+            <ul>
+                <li><code>document.addEventListener('DOMContentLoaded', ...)</code>: This ensures that our JavaScript code runs only after the entire HTML document has been loaded and parsed.</li>
+                <li><code>const detailsElement = document.getElementById('exampleDetailsElement');</code>: We get a reference to our <details> element.</li>
+                <li><code>const summaryElement = document.getElementById('exampleSummaryElement');</code>: We get a reference to our <summary> element.</li>
+                <li><code>detailsElement.addEventListener('toggle', ...)</code>: We listen for the toggle event on the details element to detect when it is opened or closed.</li>
+                <li><code>if (detailsElement.open) { ... }: Inside the toggle event listener, we check the open property of the detailsElement.</code></li>
+                <ul>
+                    <li>If detailsElement.open is true, it means the details element is now open, so we change the textContent of the summaryElement to "Hide Details".</li>
+                    <li>If detailsElement.open is false, it means the details element is now closed, so we change the textContent of the summaryElement back to "Show Details".</li>
+                </ul>
+            </ul>
+        </div>
+    </body>
+</html>
