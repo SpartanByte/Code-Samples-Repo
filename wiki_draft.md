@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://portfolio.brianwardwell.com/code-samples-repo/style.css">
+
 # Code Samples Repository
 
 The purpose of this repository is to store notes, code snippets, and documentation in a portable space. This will likely eventually shared to other developers that may find it useful as well. It is a work in progress.
@@ -66,7 +68,11 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
 ---
 
+<div class="main-documentation-resources-container">
+
 #### **Official Documentation Resources**
+
+> Click arrows to show resources
 
 <details>
 <summary>CMS Specific</summary>
@@ -95,6 +101,14 @@ The purpose of this repository is to store notes, code snippets, and documentati
 * [[https://book.cakephp.org/5/en/index.html | CakePHP 5.x]]
 * [[https://laravel.com/docs/12.x/installation | Laravel 12.x ]]
 * [[https://symfony.com/doc | Symfony ]]
+
+</details>
+
+<details>
+<summary>Python</summary>
+
+* [[https://docs.djangoproject.com/en/6.0/ | Django Framework]]
+* [[https://docs.python.org/3/ | Python Documentation ]]
 
 </details>
 
@@ -128,3 +142,5 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
 
 </details>
+
+</div>
