@@ -1,3 +1,5 @@
+// Typescript ^5.9.3
+
 import UsersTableSorter from './controllers/users-table-sorter';
 
 document.addEventListener('DOMContentLoaded', () => {
