@@ -1,0 +1,25 @@
+
+.users-table{
+    border-collapse: collapse;
+}
+
+.users-table thead tr > .users-header{
+    position: relative;
+}
+
+.users-table thead tr > .users-header .sort-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.users-table .users-header.asc .sort-icon .up,
+.users-table .users-header.desc .sort-icon .down {
+    color: var(--Theme-Blue, #3663A8);
+}
