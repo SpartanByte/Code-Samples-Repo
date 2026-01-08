@@ -59,6 +59,11 @@ The purpose of this repository is to store notes, code snippets, and documentati
         * [[python\console-applications\sochi-olympics.py|Sochi Olympics Time Calculator]]
         * [[python\console-applications\TaxEstimatorBasedOnMonthlySales.py|Tax Calculator]]
 
+    * **[[ruby/stub.md|Ruby on Rails]]**
+        * [[ruby/pinterest-api-example/pinterest_sessions_controller.rb|Pinterest API/OAUTH Controller]]
+        * [[ruby/pinterest-api-example/pinterest_sessions_controller.rb|Pinterest Show Pins View (ERB)]]
+        * [[ruby/pinterest-api-example/routes.rb|Routes Examples]]
+
     * **[[sass/stub.md|Sass (Sassy Stylesheets)]]**
         * [[sass/sass-example-stylesheet/main.scss|Sass Example Stylesheet (.scss)]]
 
