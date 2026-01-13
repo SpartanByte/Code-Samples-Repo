@@ -32,4 +32,11 @@ Domain Specific,example.com##.ad-box,"Hides "".ad-box"" only when visiting examp
 | Exception | `@@ | Tells the blocker to **allow** specific requents/elements normally blocked by a filter list. Exception does not equal error in this case. |
 | Domain Specific | example.com##.ad-box | Hides `ad-box` only when visiting example.com |
 
+#### **Simple Blocks**
+- default: when installed, it automatically applys filter lists to block common ads and trackers
+- Element Picker (Eyedropper icon or "block element" buttons)
+   - You can click this in the uBlock (or Adblock Plus) dashboard to activate this feature.
+   - You can then hover over elements (ads, divs, videos, images) where they are highlighted. Clicking the highlighted element creates a simple filter that permanently hides that type of element and that site and potentially others.
+   - in Adblock Plus, there is a "Block Element" button that does the same thing
+
 In many cases, domain specific is preferred to prevent undesired behavior. You can also apply CSS-like selectors:
