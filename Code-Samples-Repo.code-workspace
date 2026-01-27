@@ -1,0 +1,17 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        // --- Theme Settings ---
+        "workbench.colorTheme": "PowerShell ISE",
+
+        // --- Font Settings ---
+        "editor.fontSize": 14,
+
+        // --- Color Customizations ---
+
+    }
+}
