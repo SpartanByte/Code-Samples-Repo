@@ -49,6 +49,8 @@ The purpose of this repository is to store notes, code snippets, and documentati
             * [[php/laravel/laravel-ssl-certs/CertCheckerService.php | SSL Cert Checker: Service Class]]
             * [[php/laravel/laravel-ssl-certs/CertCheckerService.php | SSL Cert Checker: Cert Checker Controller]]
             * [[php/laravel/laravel-ssl-certs/migration-create_certificate_table.php | SSL Cert Checker: Certificate Table Migration]]
+        * [[php/symfony/stub.md|Symfony]]
+            * [[php/wordpress/enqueing-custom.php | Enquing Custom Scripts]]
         * [[php/wordpress/stub.md|WordPress]]
             * [[php/wordpress/enqueing-custom.php | Enquing Custom Scripts]]
             * [[php/wordpress/plugin-class.php| Custom Plugin Class (OOP)]]
@@ -66,6 +68,9 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
     * **[[sass/stub.md|Sass (Sassy Stylesheets)]]**
         * [[sass/sass-example-stylesheet/main.scss|Sass Example Stylesheet (.scss)]]
+    * **[[template-languages/stub.md|Template Languages]]**
+        * [[template-languages/twig/twig.md|Twig Templates (General)]]
+        * [[template-languages/twig/twig-forms.md|Twig Form Functions]]
 
 * **Tools**
     * [[git_snippets_and_tips|Git Snippets and Tips]]
@@ -106,6 +111,9 @@ The purpose of this repository is to store notes, code snippets, and documentati
 * [[https://book.cakephp.org/5/en/index.html | CakePHP 5.x]]
 * [[https://laravel.com/docs/12.x/installation | Laravel 12.x ]]
 * [[https://symfony.com/doc | Symfony ]]
+* [[https://symfony.com/doc/current/setup/symfony_cli.html | Symfony CLI]]
+
+
 
 </details>
 

@@ -37,6 +37,19 @@ WHERE id = 123;
 
 ---
 
+##### Update a record
+```sql
+UPDATE your_table_name
+SET 
+    purchase_from = '2025-02-01 00:00:00',
+    purchase_to = '2025-02-15 23:59:59',
+    valid_from = NULL,
+    valid_to = NULL
+WHERE 
+    reward_modifier_id = 1 
+    AND coupon_code = '12345';
+```
+
 <div class="md-resources">
 
 --- 
