@@ -14,6 +14,31 @@ Executes all pending migrations, updating the database schema to the latest vers
 | `php bin/console doctrine:database:drop --force` | Drops and recreates the database |
 | `php bin/console doctrine:schema:update --force` | Applies schema with no migrations (bypasses migrations) |
 | `php bin/console doctrine:fixtures:load` | Seeds the database (*like Laravel's php artisan db:seed*) |
+| `php bin/console doctrine:migrations:migrate prev` | This executes the down() method of your most recent migration and updates the `doctrine_migration_versions` table. |
+
+---
+
+#### Cleaning up incorrect migration files that are causing issues or make the application code cleaner
+**Note:** *It is **bad practice** to manually delete migration files. This leads to errors and complications because the Doctrine migration history is out of sync with the application.*
+
+One way is to rollback the most recent migration. In my experience, this is the best approach when the issue is during development and in the local development environment. Also, when the issue is within the last migration. This command is great for a typo in a column name or simple changes in one migration file.
+
+```console
+php bin/console doctrine:migrations:migrate prev
+```
+
+When needing to revert several steps of migrations or if migration files were accidentally ran twice, you need to look at the Doctrine migration history itself.
+
+<ol>
+    <li>You need a list of registered migrations that Doctrine is aware of.</li>
+    <ul>
+        <li><code>php bin/console doctrine:migrations:list</code> will list the registered migrations in the format of <strong>DoctrineMigrations\Version{YYYYMMDD}{milliseconds}</strong></li>
+    </ul>
+    <li>Once the infected/problematic migrations(s) are found, you can reset the Doctrine history to start at a version number and omit migrations after that point. Example:</li>
+    <ul>
+        <li><code>php bin/console doctrine:migrations:migrate 'DoctrineMigrations\Version20260127100000'</code></li>
+    </ul>
+<ol>
 
 --- 
 
