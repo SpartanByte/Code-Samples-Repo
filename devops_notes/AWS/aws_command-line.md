@@ -1,5 +1,5 @@
-
-
+# Amazon Web Services
+![AWS Amazon Web Servicesa](/images/aws-logo.png "DDL Databases")
 
 ### AWS CLI Configuration with an API Key
 
@@ -14,7 +14,6 @@
 ##### Configuring the AWS CLI
 Once you have the keys, open the terminal/command prompt and run
 `aws configure`
-
 
 | Prompt | What to Enter | Example |
 | :--- | :--- | :--- |
