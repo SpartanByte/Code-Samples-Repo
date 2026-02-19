@@ -1,5 +1,5 @@
 # WordPress
-![WordPress graphic](/images/wordpress-logo.png "WordPress")
+![WordPress graphic](/images/wordpress-logo.png "WordPress CMS")
 
 ---
 
