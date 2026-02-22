@@ -1,5 +1,5 @@
 # Amazon Web Services
-![AWS Amazon Web Servicesa](/images/aws-logo.png "DDL Databases")
+![AWS Amazon Web Services](/images/aws-logo.png "Amazon Web Services Logo")
 
 ### AWS CLI Configuration with an API Key
 
