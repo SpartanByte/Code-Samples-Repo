@@ -14,6 +14,10 @@
     table#inv_footer h4{
       margin: 0;
     }
+
+    table#inv_addresses td{
+      padding: 20px;
+    }
     
     table{
       margin-bottom: 20px;
@@ -31,6 +35,18 @@
       background-color: #ffffff;
       border: 1px solid #000000;
     }
+    table#inv_container th:first-of-type,
+    table#inv_container td:first-of-type{
+      padding: 10px 20px;
+    }
+    table#inv_container th,
+    table#inv_container td{
+      padding: 10px 0px;
+    }
+    table#inv_container th:last-of-type,
+    table#inv_container td:last-of-type{
+      padding: 10px 20px;
+    }
   </style>
   <center>
     <p>
@@ -41,93 +57,91 @@
       width="95%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td align="center" valign="top">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-          <tr>
-            <td align="center" bgcolor="#52575d" valign="top">
-            <h1><font color="white">Minneopa Technology Solutions</font></h1>
-            </td>
-          </tr>
-        </table>
-        
-        <table border="0" cellpadding="0" cellspacing="0" width="98%">
-          <tr>
-            <td align="left"  width="70%"><h2>Invoice for Order #533102 </h2></td>
-            <td align="right" width="30%"><h3>January 1st, 2026</h3></td>
-          </tr>
-        </table>
-        <!-- merchant/recipient address header -->
-        <table id="inv_addresses" border="0" 
-               cellpadding="2" cellspacing="0" width="98%">
-          <tr>
-              <td align="left" style="background-color: #f4f4f4; padding: 20px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td align="center" bgcolor="#52575d" valign="top">
+                <h1><font color="white">Minneopa Technology Solutions</font></h1>
+                <img src="company-logo.png" alt="Company Logo" width="300" height="300">
+              </td>
+            </tr>
+          </table>
+          <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tr>
+              <td align="left"  width="70%"><h2>Invoice for Order #533102 </h2></td>
+              <td align="right" width="30%"><h3>January 1st, 2026</h3></td>
+            </tr>
+          </table>
+          <!-- merchant/recipient address header -->
+          <table id="inv_addresses" border="0" 
+                cellpadding="2" cellspacing="0" width="98%">
+            <tr>
+              <td align="left" bgcolor="#f4f4f4">
                 <h3>From</h3>
                 Minneopa Technology Solutions Inc. <br>
                 123 Hennepin Avenue<br>
                 Minneapolis, MN 55433 
               </td>
-              <td align="left" style="background-color: #f4f4f4; padding: 20px;">
+              <td align="left" bgcolor="#f4f4f4">
                 <h3>To</h3>
                 GNB <br>
                 456 Franklin Dr<br>
                 Minneapolis, MN 55433 
               </td>
-          </tr>
-        </table>
-        <!-- itemized invoice list -->
-        <table border="0" cellpadding="2" cellspacing="0" width="98%">
-          <caption>Order Summary</caption>
-          <tr>
-            <th bgcolor="#cccccc" align="left" valign="top" style="padding: 10px 20px;">SKU</th>
-            <th bgcolor="#cccccc" align="left" valign="top" style="padding: 10px 0;">Item</th>
-            <th bgcolor="#cccccc" align="right" svalign="top" style="padding: 10px 0;">Price</th>
-            <th bgcolor="#cccccc" align="center" valign="top" width="10%" style="padding: 10px 0;">QTY</th>
-            <th bgcolor="#cccccc" align="right" valign="top" width="10%" style="padding: 10px 20px;">Total</th>
-          </tr>
-          <tr>
-            <td valign="top" style="padding: 10px 20px;">10042</td>
-            <td valign="top">15-inch MacBook Pro</td>
-            <td align="right" valign="top">$1799.00</td>
-            <td align="center" valign="top">1</td>
-            <td align="right" valign="top" style="padding: 10px 20px;">$1799.00</td>
-          </tr>
-          <tr>
-            <td valign="top" style="padding: 10px 20px;">20005</td>
-            <td valign="top">Mini-Display Port to VGA Adapter</td>
-            <td align="right" valign="top">$19.99</td>
-            <td align="center" valign="top">1</td>
-            <td align="right" valign="top" style="padding: 10px 20px;">$19.99</td>
-          </tr>
-        </table>
-        <hr>
-        <table border="0" cellpadding="2" cellspacing="0" width="98%">
-          <tr>
-            <td align="right" valign="top" style="padding: 0px 20px;">Subtotal: </td>
-            <td align="right" valign="top" width="10%" style="padding: 0px 20px;">$1818.99</td>
-          </tr>
-		  
-          <tr>
-            <td align="right" valign="top" style="padding: 0px 20px;">Total Due: </td>
-            <td align="right" valign="top" style="padding: 0px 20px;"><b>$1818.99</b> </td>
-          </tr>
-        </table>
-       <table border="0" cellpadding="0" cellspacing="0" width="98%">
-         <tr><td align="left">
-           <h2>Notes</h2>
-           <p>Thank you for your business!</p>
-         </td></tr>
-       </table>
-        <table id="inv_footer" border="0" 
-               cellpadding="0" cellspacing="0" width="100%">
-          <tr>
-            <td align="center" valign="top">
-            <h4>Copyright &copy; 2026 Minneopa Technology Solutions</h4>		
-            <h4>
-               You are receiving this email because you purchased
-               products from us. 
-            </h4>
-            </td>
-          </tr>
-        </table>
+            </tr>
+          </table>
+          <!-- itemized invoice list -->
+          <table id="inv_order_summary" border="0" cellpadding="2" cellspacing="0" width="98%">
+            <caption>Order Summary</caption>
+            <tr>
+              <th bgcolor="#cccccc" align="left" valign="top">SKU</th>
+              <th bgcolor="#cccccc" align="left" valign="top">Item</th>
+              <th bgcolor="#cccccc" align="right" valign="top">Price</th>
+              <th bgcolor="#cccccc" align="center" valign="top" width="10%">QTY</th>
+              <th bgcolor="#cccccc" align="right" valign="top" width="10%">Total</th>
+            </tr>
+            <tr>
+              <td valign="top" style="padding: 10px 20px;">10042</td>
+              <td valign="top" style="padding: 10px 0px;">15-inch MacBook Pro</td>
+              <td align="right" valign="top">$1799.00</td>
+              <td align="center" valign="top">1</td>
+              <td align="right" valign="top" style="padding: 10px 20px;">$1799.00</td>
+            </tr>
+            <tr>
+              <td valign="top" style="padding: 10px 20px;">20005</td>
+              <td valign="top" style="padding: 10px 0px;">Mini-Display Port to HDMI Adapter</td>
+              <td align="right" valign="top">$19.99</td>
+              <td align="center" valign="top">1</td>
+              <td align="right" valign="top" style="padding: 10px 20px;">$19.99</td>
+            </tr>
+          </table>
+          <hr>
+          <table border="0" cellpadding="2" cellspacing="0" width="98%">
+            <tr>
+              <td align="right" valign="top" style="padding: 0px 20px;">Subtotal: </td>
+              <td align="right" valign="top" width="10%" style="padding: 0px 20px;">$1818.99</td>
+            </tr>		  
+            <tr>
+              <td align="right" valign="top" style="padding: 0px 20px;">Total Due: </td>
+              <td align="right" valign="top" style="padding: 0px 20px;"><b>$1818.99</b> </td>
+            </tr>
+          </table>
+          <table border="0" cellpadding="0" cellspacing="0" width="98%">
+            <tr><td align="left">
+              <h2>Notes</h2>
+              <p>Thank you for your recent purchase! We truly appreciate your business and hope you are completely satisfied with your order.<br/>
+                  You are receiving this message regarding your recent transaction with our company. If you have any questions about this invoice, please contact us at 
+                  <a href="mailto:info@minneopa.com">info@minneopa.com</a>
+                </p>
+            </td></tr>
+          </table>
+          <table id="inv_footer" border="0" 
+                cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td align="center" valign="top">
+                <h4>Copyright &copy; 2026 Minneopa Technology Solutions</h4>		
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>
