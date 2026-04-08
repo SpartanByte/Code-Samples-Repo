@@ -3,6 +3,9 @@
 # OS Agnostic, uses pathlib for path handling and Pillow for image processing.
 # This script is great for uniformly converting images.  
 
+# You will need to install Pillow if you haven't already:
+# pip install Pillow
+
 from pathlib import Path
 from PIL import Image
 
