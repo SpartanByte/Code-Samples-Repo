@@ -17,7 +17,7 @@ if folder.exists():
         # Target only .jpg or .jpeg files
         if file_path.suffix.lower() in [".jpg", ".jpeg"]:
             
-            # 1. Open the image
+            # Open the image
             with Image.open(file_path) as img:
                 
                 # Create the new filename (swap .jpg for .png)
@@ -27,9 +27,10 @@ if folder.exists():
                 img.save(new_path, "PNG")
                 
                 print(f"Converted: {file_path.name} -> {new_path.name}")
+            
+                # Deletion of the file can be added here if desired, but it's commented out for safety.
+                # file_path.unlink()
 
-            # 4. Optional: Remove the original .jpg file
-            # file_path.unlink() 
 else:
     print("Folder not found!")
 
