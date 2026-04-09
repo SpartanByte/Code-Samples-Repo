@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Note: Devise is a Ruby gem for modular authentication solutions in Rails applications.
   # Quick and easy setup for user authentication, including sign-up, login, logout, password recovery, and more.
 
-  root to: "pages#index"
+  root 'issues#index'
 
   # These resources are completely independent
   resources :issues, only: [:index, :show]
