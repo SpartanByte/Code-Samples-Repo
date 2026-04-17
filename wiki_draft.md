@@ -6,75 +6,74 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
 *Note: There is no internal processes or personal information stored*
 
-#### [[https://developer.brianwardwell.com|My Developer Portfolio 🔗]] 
-
+#### [My Developer Portfolio 🔗](https://developer.brianwardwell.com)
 #### Table of Contents
 
-* **Languages and Frameworks**
+### **Languages and Frameworks**
 
-    * **[[api/stub.md|API Integration]]**
-        * [[api/LLM.html|AI/LLM Prompt Example]]
+* **[API Integration](api/stub.md)**
+    * [AI/LLM Prompt Example](api/LLM.html)
 
-    * **[[csharp/stub.md|C#/.NET]]**
-        * [[csharp-umbraco-examples/stub.md|Umbraco .NET CMS]]
-            * [[csharp/umbraco-examples/macro-partials/Image Section - Floating Text.cshtml|Umbraco Image/Floating Text Macro Partial (Razer syntax)]]
-            * [[csharp/umbraco-examples/partials/home_ourwork.cshtml|Umbraco Partial Example 1]]
-            * [[csharp/umbraco-examples/partials/home_thecrew.cshtml|Umbraco Partial Example 2]]
-        * [[csharp-umbraco-examples/stub.md|C#]]
-            * [[csharp/averages-form.cs|Form To Find Averages]]
-            * [[event-class-and-implementation.cs|C# Class and Implementation]]
+* **[C#/.NET](csharp/stub.md)**
+    * [Umbraco .NET CMS](csharp-umbraco-examples/stub.md)
+        * [Umbraco Image/Floating Text Macro Partial (Razer syntax)](csharp/umbraco-examples/macro-partials/Image%20Section%20-%20Floating%20Text.cshtml)
+        * [Umbraco Partial Example 1](csharp/umbraco-examples/partials/home_ourwork.cshtml)
+        * [Umbraco Partial Example 2](csharp/umbraco-examples/partials/home_thecrew.cshtml)
+    * [C#](csharp-umbraco-examples/stub.md)
+        * [Form To Find Averages](csharp/averages-form.cs)
+        * [C# Class and Implementation](event-class-and-implementation.cs)
 
-    * **[[javascript/stub.md|JavaScript]]**
-        * [[javascript/jquery-slideshow/js-examples.js|jQuery Slide Show Examples]]
-        * [[javascript/jquery-slideshow\slideshow.blade.php|jQuery Slide Show Template (in Blade template language)]]
+* **[JavaScript](javascript/stub.md)**
+    * [jQuery Slide Show Examples](javascript/jquery-slideshow/js-examples.js)
+    * [jQuery Slide Show Template (in Blade template language)](javascript/jquery-slideshow/slideshow.blade.php)
 
-    * **[[mysql/stub.md|MySQL]]**
-        * [[mysql/quick_queries.md|Quick Queries]]
-        * [[mysql/ddl.md|DDL (Data Definition Language)]]
+* **[MySQL](mysql/stub.md)**
+    * [Quick Queries](mysql/quick_queries.md)
+    * [DDL (Data Definition Language)](mysql/ddl.md)
 
-    * **[[nextjs/stub.md|Next.js]]**
-        * [[nextjs/pages/api/events.ts|Pages API Events]]
+* **[Next.js](nextjs/stub.md)**
+    * [Pages API Events](nextjs/pages/api/events.ts)
 
-    * **[[php/stub.md|PHP]]**
-        * [[php/cakephp/orm.md#Mass Assignment|CakePHP]]
-            * [[php/cakephp/quick_snippets.md | Snippets (Starter Page)]]
-        * [[php/laravel/orm.md#Mass Assignment|Laravel]]
-            * [[php/laravel/gallery-blade-view/show.blade.php | Gallery Blade Overview: Show Template]]
-            * [[php/laravel/laravel-holiday-calculator/CodeSampleController.php | Holiday Calculator Controller]]
-            * [[php/laravel/laravel-holiday-calculator/HolidayService.php | Holiday Calculator Service Class]]
-            * [[php/laravel/laravel-holiday-calculator/timeanddates.blade.php | Holiday Calculator Blade Template]]
-            * [[php/laravel/laravel-posts/controllers/FileController.php | File Controller (including File Upload)]]
-            * [[php/laravel/laravel-posts/controllers/PostController.php | Post Controller (CRUD))]]
-            * [[php/laravel/laravel-posts/controllers/Post.php | Post Model]]
-            * [[php/laravel/laravel-ssl-certs/CertCheckerService.php | SSL Cert Checker: Service Class]]
-            * [[php/laravel/laravel-ssl-certs/CertCheckerService.php | SSL Cert Checker: Cert Checker Controller]]
-            * [[php/laravel/laravel-ssl-certs/migration-create_certificate_table.php | SSL Cert Checker: Certificate Table Migration]]
-        * [[php/symfony/stub.md|Symfony]]
-            * [[php/wordpress/enqueing-custom.php | Enquing Custom Scripts]]
-        * [[php/wordpress/stub.md|WordPress]]
-            * [[php/wordpress/enqueing-custom.php | Enquing Custom Scripts]]
-            * [[php/wordpress/plugin-class.php| Custom Plugin Class (OOP)]]
-            * [[php/wp-api-extension.php | Extending WordPress API]]
+* **[PHP](php/stub.md)**
+    * [CakePHP](php/cakephp/orm.md#Mass-Assignment)
+        * [Snippets (Starter Page)](php/cakephp/quick_snippets.md)
+    * [Laravel](php/laravel/orm.md#Mass-Assignment)
+        * [Gallery Blade Overview: Show Template](php/laravel/gallery-blade-view/show.blade.php)
+        * [Holiday Calculator Controller](php/laravel/laravel-holiday-calculator/CodeSampleController.php)
+        * [Holiday Calculator Service Class](php/laravel/laravel-holiday-calculator/HolidayService.php)
+        * [Holiday Calculator Blade Template](php/laravel/laravel-holiday-calculator/timeanddates.blade.php)
+        * [File Controller (including File Upload)](php/laravel/laravel-posts/controllers/FileController.php)
+        * [Post Controller (CRUD)](php/laravel/laravel-posts/controllers/PostController.php)
+        * [Post Model](php/laravel/laravel-posts/controllers/Post.php)
+        * [SSL Cert Checker: Service Class](php/laravel/laravel-ssl-certs/CertCheckerService.php)
+        * [SSL Cert Checker: Cert Checker Controller](php/laravel/laravel-ssl-certs/CertCheckerService.php)
+        * [SSL Cert Checker: Certificate Table Migration](php/laravel/laravel-ssl-certs/migration-create_certificate_table.php)
+    * [Symfony](php/symfony/stub.md)
+    * [WordPress](php/wordpress/stub.md)
+        * [Enqueuing Custom Scripts](php/wordpress/enqueing-custom.php)
+        * [Custom Plugin Class (OOP)](php/wordpress/plugin-class.php)
+        * [Extending WordPress API](php/wp-api-extension.php)
 
-    * **[[python/stub.md|Python (Console Programs)]]**
-        * [[python\console-applications\CelsiusFarenheitTable.py|Celsius to Farenheit Calculator]]
-        * [[python\console-applications\sochi-olympics.py|Sochi Olympics Time Calculator]]
-        * [[python\console-applications\TaxEstimatorBasedOnMonthlySales.py|Tax Calculator]]
+* **[Python (Console Programs)](python/stub.md)**
+    * [Celsius to Farenheit Calculator](python/console-applications/CelsiusFarenheitTable.py)
+    * [Sochi Olympics Time Calculator](python/console-applications/sochi-olympics.py)
+    * [Tax Calculator](python/console-applications/TaxEstimatorBasedOnMonthlySales.py)
 
-    * **[[ruby/stub.md|Ruby on Rails]]**
-        * [[ruby/pinterest-api-example/pinterest_sessions_controller.rb|Pinterest API/OAUTH Controller]]
-        * [[ruby/pinterest-api-example/pinterest_sessions_controller.rb|Pinterest Show Pins View (ERB)]]
-        * [[ruby/pinterest-api-example/routes.rb|Routes Examples]]
+* **[Ruby on Rails](ruby/stub.md)**
+    * [Pinterest API/OAUTH Controller](ruby/pinterest-api-example/pinterest_sessions_controller.rb)
+    * [Pinterest Show Pins View (ERB)](ruby/pinterest-api-example/pinterest_sessions_controller.rb)
+    * [Routes Examples](ruby/pinterest-api-example/routes.rb)
 
-    * **[[sass/stub.md|Sass (Sassy Stylesheets)]]**
-        * [[sass/sass-example-stylesheet/main.scss|Sass Example Stylesheet (.scss)]]
-    * **[[template-languages/stub.md|Template Languages]]**
-        * [[template-languages/twig/twig.md|Twig Templates (General)]]
-        * [[template-languages/twig/twig-forms.md|Twig Form Functions]]
+* **[Sass (Sassy Stylesheets)](sass/stub.md)**
+    * [Sass Example Stylesheet (.scss)](sass/sass-example-stylesheet/main.scss)
+
+* **[Template Languages](template-languages/stub.md)**
+    * [Twig Templates (General)](template-languages/twig/twig.md)
+    * [Twig Form Functions](template-languages/twig/twig-forms.md)
 
 * **Tools**
-    * [[git_snippets_and_tips|Git Snippets and Tips]]
-    * [[tools/composer.md|Composer]]
+    * [Git Snippets and Tips](git_snippets_and_tips)
+    * [Composer](tools/composer.md)
 
 ---
 
@@ -86,72 +85,72 @@ The purpose of this repository is to store notes, code snippets, and documentati
 
 <details>
 <summary>CMS Specific</summary>
-    
-* [[https://wordpress.org/documentation | WordPress]]
-* [[https://developer.adobe.com/commerce/docs/] | Magento Documentation (Adobe Commerce)]]
-* [[https://shopify.dev/docs] | Shopify Developer Docs]]
-    * [[https://shopify.dev/docs/api/shopify-cli] | Shopify CLI Project Developer Docs]]
+
+* [WordPress](https://wordpress.org/documentation)
+* [Magento Documentation (Adobe Commerce)](https://developer.adobe.com/commerce/docs/)
+* [Shopify Developer Docs](https://shopify.dev/docs)
+* [Shopify CLI Project Developer Docs](https://shopify.dev/docs/api/shopify-cli)
 
 </details>
 
 <details>
 <summary>JavaScript (and frameworks/libraries)</summary>
 
-* [[https://devdocs.io/javascript | JavaScript (DevDocs)]]
-* [[https://nextjs.org/docs | Next.js]]
-* [[https://react.dev/reference/react | React and React DOM]]
-* [[https://vuejs.org/guide/introduction | Vue.js]]
+* [JavaScript (DevDocs)](https://devdocs.io/javascript)
+* [Next.js](https://nextjs.org/docs)
+* [React and React DOM](https://react.dev/reference/react)
+* [Vue.js](https://vuejs.org/guide/introduction)
 
 </details>
 
 <details>
 <summary>PHP</summary>
 
-* [[https://www.php.net/manual/en/ | PHP Manual]]
-* [[https://book.cakephp.org/5/en/index.html | CakePHP 5.x]]
-* [[https://laravel.com/docs/12.x/installation | Laravel 12.x ]]
-* [[https://symfony.com/doc | Symfony ]]
-* [[https://symfony.com/doc/current/setup/symfony_cli.html | Symfony CLI]]
-
-
+* [PHP Manual](https://www.php.net/manual/en/)
+* [CakePHP 5.x](https://book.cakephp.org/5/en/index.html)
+* [Laravel 12.x](https://laravel.com/docs/12.x/installation)
+* [Symfony](https://symfony.com/doc)
+* [Symfony CLI](https://symfony.com/doc/current/setup/symfony_cli.html)
 
 </details>
 
 <details>
 <summary>Python</summary>
 
-* [[https://docs.djangoproject.com/en/6.0/ | Django Framework]]
-* [[https://docs.python.org/3/ | Python Documentation ]]
+* [Django Framework](https://docs.djangoproject.com/en/6.0/)
+* [Python Documentation](https://docs.python.org/3/)
 
 </details>
 
---- 
+---
 
 <details>
 <summary>Environment</summary>
 
-* [[https://herd.laravel.com/docs/windows/getting-started/installation | Laravel Herd ]]
-* [[https://docs.docker.com/ | Docker ]]
-
+* [Laravel Herd](https://herd.laravel.com/docs/windows/getting-started/installation)
+* [Docker](https://docs.docker.com/)
 
 </details>
 
 <details>
 <summary>Servers</summary>
 
-* [[https://forge.laravel.com/docs/introduction | Laravel Forge ]]
-* [[https://cheatography.com/davechild/cheat-sheets/linux-command-line/ | Linux CLI Cheat Sheet]]
-* [[https://assets.ubuntu.com/v1/d00791ae-ubuntu_cli_cheat_sheet_2025.pdf | Ubuntu Server CLI Cheat Sheet]]
-
+* [Laravel Forge](https://forge.laravel.com/docs/introduction)
+* [Linux CLI Cheat Sheet](https://cheatography.com/davechild/cheat-sheets/linux-command-line/)
+* [Ubuntu Server CLI Cheat Sheet](https://assets.ubuntu.com/v1/d00791ae-ubuntu_cli_cheat_sheet_2025.pdf)
 
 </details>
 
 <details>
 <summary>Tools</summary>
 
-* [[https://learning.postman.com/docs/introduction/overview | Postman API Platform]]
-* [[https://learning.postman.com/docs/postman-cli/postman-cli-installation|Postman CLI]]
-* [[https://git-scm.com/book/en/v2 | Git ]]
+* [Postman API Platform](https://learning.postman.com/docs/introduction/overview)
+* [Postman CLI](https://learning.postman.com/docs/postman-cli/postman-cli-installation)
+* [Git](https://git-scm.com/book/en/v2)
+
+</details>
+
+</div>
 
 
 </details>
