@@ -62,7 +62,13 @@ The purpose of this repository is to store notes, code snippets, and documentati
 * **[Ruby on Rails](ruby/stub.md)**
     * [Pinterest API/OAUTH Controller](ruby/pinterest-api-example/pinterest_sessions_controller.rb)
     * [Pinterest Show Pins View (ERB)](ruby/pinterest-api-example/pinterest_sessions_controller.rb)
-    * [Routes Examples](ruby/pinterest-api-example/routes.rb)
+    * Ruby on Rails Sample With React Component
+        * [Articles React Component - Article Show Container](ruby/articles-backend-with-component/articles-react-component/)      
+        * [Articles React Component - Article Index Container](ruby/articles-backend-with-component/articles-react-component/ArticleIndexTable.jsx)
+        * [Articles Controller](ruby/articles-backend-with-component/articles_controller.rb)
+        * [Articles Show View (ERB)](ruby/articles-backend-with-component/articles_show.html.erb)
+        * [Articles Index View (ERB)](ruby/articles-backend-with-component/articles_index.html.erb)
+        * [Routes File](ruby/articles-backend-with-component/routes.rb)
 
 * **[Sass (Sassy Stylesheets)](sass/stub.md)**
     * [Sass Example Stylesheet (.scss)](sass/sass-example-stylesheet/main.scss)
