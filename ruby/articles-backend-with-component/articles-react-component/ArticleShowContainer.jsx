@@ -1,5 +1,6 @@
 import React from 'react'
 import { formatDate } from '../helpers'
+import DOMPurify from 'dompurify'; // 
 
 class ArticleShowContainer extends React.Component{
     
@@ -10,13 +11,15 @@ class ArticleShowContainer extends React.Component{
     }
 
     render(){
+        let cleanHTML = DOMPurify.sanitize(this.props.article.body_html);
+        
         return(
             <div>
                 <p>Headline: {this.props.article.headline}</p>
                 <p>Reading Level: {this.props.article.reading_level}</p>
                 <p>Issue Date: {formatDate(this.props.article.created_at)}</p>
                 <p>Body: </p>
-                <div dangerouslySetInnerHTML={{ __html: this.props.article.body_html }} />
+                <div cleanURLSetInnerHTML={{ __html: this.props.article.body_html }} />
             </div>
         );
     }
