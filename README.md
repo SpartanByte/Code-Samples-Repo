@@ -63,7 +63,7 @@ The purpose of this repository is to store notes, code snippets, and documentati
     * [Pinterest API/OAUTH Controller](ruby/pinterest-api-example/pinterest_sessions_controller.rb)
     * [Pinterest Show Pins View (ERB)](ruby/pinterest-api-example/pinterest_sessions_controller.rb)
     * Ruby on Rails Sample With React Component
-        * [Articles React Component - Article Show Container](ruby/articles-backend-with-component/articles-react-component/)      
+        * [Articles React Component - Article Show Container](ruby/articles-backend-with-component/articles-react-component/ArticleShowContainer.jsx)      
         * [Articles React Component - Article Index Container](ruby/articles-backend-with-component/articles-react-component/ArticleIndexTable.jsx)
         * [Articles Controller](ruby/articles-backend-with-component/articles_controller.rb)
         * [Articles Show View (ERB)](ruby/articles-backend-with-component/articles_show.html.erb)
