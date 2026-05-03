@@ -1,4 +1,6 @@
 # Automatic on main branch commits - deploy to staging
+# Required CI/CD variables = STAGING_SSH_KEY, STAGING_HOST, APP_KEY, DB_HOST
+# Set these in Settings → CI/CD → Variables. Mark secrets (SSH keys, APP_KEY) as Masked and Protected.
 deploy-staging:
   stage: deploy
   image: alpine:3

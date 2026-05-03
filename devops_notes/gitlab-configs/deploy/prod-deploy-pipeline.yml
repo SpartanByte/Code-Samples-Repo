@@ -1,4 +1,6 @@
 # Manual deployment to production, only after staging is successful
+# Required CI/CD variables = PROD_SSH_KEY, PROD_HOST, APP_KEY, PROD_DB_HOST
+# Set these in Settings → CI/CD → Variables. Mark secrets (SSH keys, APP_KEY) as Masked and Protected.
 deploy-prod:
   stage: deploy
   image: alpine:3

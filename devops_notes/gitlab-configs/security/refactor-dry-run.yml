@@ -1,3 +1,6 @@
+# Required CI/CD variables = APP_KEY
+# Set these in Settings → CI/CD → Variables. Mark secrets (SSH keys, APP_KEY) as Masked and Protected.
+# This pipeline runs Rector in dry-run mode to check for potential code issues and deprecations. It allows failures so it won't block the pipeline, but it provides
 rector:
   stage: security
   image: php:8.3-cli

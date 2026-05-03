@@ -10,7 +10,7 @@ image: php:8.3-cli
 # Prevents duplicate pipelines on push + open MR.
 workflow:
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" # Only run on MRs
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
@@ -50,7 +50,7 @@ variables:
 
 pint:
   stage: lint
-  interruptible: true
+  interruptible: true # Allow newer commits to cancel outdated lint jobs
   <<: *composer_setup
   script:
     - ./vendor/bin/pint --test
@@ -86,7 +86,7 @@ phpunit:
     DB_PASSWORD: secret
   before_script:
     - apt-get update -q && apt-get install -qy libzip-dev libpng-dev
-    - docker-php-ext-install pdo_mysql zip gd
+    - docker-php-ext-install pdo_mysql zip gd # Install PHP extensions needed for testing
     - curl -sS https://getcomposer.org/installer | php -- --quiet
     - php composer.phar install --no-interaction --prefer-dist --quiet
     - cp .env.example .env.testing
@@ -95,9 +95,9 @@ phpunit:
     - php artisan migrate --env=testing --force
   script:
     - ./vendor/bin/phpunit
-        --coverage-text
+        --coverage-text 
         --coverage-clover=coverage.xml
-  coverage: '/Lines:\s+(\d+\.\d+)%/'
+  coverage: '/Lines:\s+(\d+\.\d+)%/' # Extracts coverage % from PHPUnit output
   artifacts:
     reports:
       coverage_report:

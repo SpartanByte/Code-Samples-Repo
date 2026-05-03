@@ -1,3 +1,7 @@
+# GitLab CI configuration for PHPStan static analysis
+# ============================================================
+# This job runs PHPStan to perform static analysis on the codebase.
+# It is triggered on merge requests and commits to the main branch.
 phpstan:
   stage: lint
   image: php:8.3-cli
