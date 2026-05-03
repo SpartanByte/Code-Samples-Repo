@@ -1,0 +1,286 @@
+# GitLab CI/CD pipeline configuration file
+# ============================================================
+# GitLab CI/CD Pipeline — PHP Laravel
+# ============================================================
+
+# ── Global default image ────────────────────────────────────
+image: php:8.3-cli
+
+# ── Pipeline trigger rules ──────────────────────────────────
+# Prevents duplicate pipelines on push + open MR.
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+# ── Stages ──────────────────────────────────────────────────
+stages:
+  - lint
+  - test
+  - security
+  - build
+  - deploy
+
+# ── Global cache (Composer) ─────────────────────────────────
+# Keyed to composer.lock so vendor/ is only re-fetched when
+# dependencies actually change.
+cache:
+  key:
+    files:
+      - composer.lock
+  paths:
+    - vendor/
+
+# ── YAML anchors ────────────────────────────────────────────
+# Reusable Composer bootstrap — attach with <<: *composer_setup
+.composer_setup: &composer_setup
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php -- --quiet
+    - php composer.phar install --no-interaction --prefer-dist --quiet
+
+# ── Shared variables ────────────────────────────────────────
+variables:
+  APP_ENV: testing
+  # APP_KEY must be set in GitLab CI/CD Variables (masked + protected)
+
+# ============================================================
+# STAGE: lint
+# ============================================================
+
+pint:
+  stage: lint
+  interruptible: true
+  <<: *composer_setup
+  script:
+    - ./vendor/bin/pint --test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+phpstan:
+  stage: lint
+  interruptible: true
+  <<: *composer_setup
+  script:
+    - ./vendor/bin/phpstan analyse app tests
+        --level=6
+        --memory-limit=512M
+  allow_failure: true
+
+# ============================================================
+# STAGE: test
+# ============================================================
+
+phpunit:
+  stage: test
+  interruptible: true
+  services:
+    - mysql:8.0
+  variables:
+    MYSQL_ROOT_PASSWORD: secret
+    MYSQL_DATABASE: laravel_test
+    DB_HOST: mysql
+    DB_DATABASE: laravel_test
+    DB_USERNAME: root
+    DB_PASSWORD: secret
+  before_script:
+    - apt-get update -q && apt-get install -qy libzip-dev libpng-dev
+    - docker-php-ext-install pdo_mysql zip gd
+    - curl -sS https://getcomposer.org/installer | php -- --quiet
+    - php composer.phar install --no-interaction --prefer-dist --quiet
+    - cp .env.example .env.testing
+    - echo "APP_KEY=$APP_KEY" >> .env.testing
+    - php artisan key:generate --env=testing
+    - php artisan migrate --env=testing --force
+  script:
+    - ./vendor/bin/phpunit
+        --coverage-text
+        --coverage-clover=coverage.xml
+  coverage: '/Lines:\s+(\d+\.\d+)%/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    expire_in: 7 days
+
+dusk:
+  stage: test
+  interruptible: true
+  services:
+    - mysql:8.0
+  variables:
+    MYSQL_ROOT_PASSWORD: secret
+    MYSQL_DATABASE: laravel_test
+    APP_URL: "http://localhost:8000"
+  before_script:
+    - apt-get update -q && apt-get install -qy chromium chromium-driver libzip-dev
+    - docker-php-ext-install pdo_mysql zip
+    - curl -sS https://getcomposer.org/installer | php -- --quiet
+    - php composer.phar install --no-interaction --prefer-dist --quiet
+    - cp .env.example .env
+    - echo "APP_KEY=$APP_KEY" >> .env
+    - php artisan key:generate
+    - php artisan migrate --force
+    - php artisan serve &
+  script:
+    - php artisan dusk
+  artifacts:
+    when: on_failure
+    paths:
+      - tests/Browser/screenshots/
+      - tests/Browser/console/
+    expire_in: 3 days
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ============================================================
+# STAGE: security
+# ============================================================
+
+security-check:
+  stage: security
+  interruptible: true
+  <<: *composer_setup
+  script:
+    - curl -sL https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.6/local-php-security-checker_linux_amd64
+        -o security-checker
+    - chmod +x security-checker
+    - ./security-checker --format=json
+  allow_failure: false
+
+rector:
+  stage: security
+  interruptible: true
+  <<: *composer_setup
+  script:
+    - ./vendor/bin/rector process --dry-run
+  allow_failure: true
+
+# ============================================================
+# STAGE: build
+# ============================================================
+
+vite-build:
+  stage: build
+  image: node:20-alpine
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+  before_script:
+    - npm ci --prefer-offline
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - public/build/
+    expire_in: 1 day
+
+docker-build:
+  stage: build
+  image: docker:24
+  needs: ["vite-build"]
+  services:
+    - docker:24-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - docker login -u $CI_REGISTRY_USER
+        -p $CI_REGISTRY_PASSWORD
+        $CI_REGISTRY
+  script:
+    - docker build
+        --cache-from $CI_REGISTRY_IMAGE:latest
+        --build-arg APP_ENV=production
+        --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+        --tag $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ============================================================
+# STAGE: deploy
+# ============================================================
+
+.deploy_base: &deploy_base
+  image: alpine:3
+  needs: ["docker-build"]
+  before_script:
+    - apk add --no-cache openssh-client curl
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+  after_script:
+    # Notify Slack on failure (set SLACK_WEBHOOK in CI/CD Variables)
+    - |
+      if [ "$CI_JOB_STATUS" = "failed" ]; then
+        curl -s -X POST "$SLACK_WEBHOOK" \
+          -H 'Content-type: application/json' \
+          --data "{\"text\":\":x: *$CI_JOB_NAME* failed on \`$CI_COMMIT_BRANCH\` — $CI_PIPELINE_URL\"}"
+      fi
+
+deploy-staging:
+  stage: deploy
+  <<: *deploy_base
+  environment:
+    name: staging
+    url: https://staging.example.com
+  before_script:
+    - apk add --no-cache openssh-client curl
+    - eval $(ssh-agent -s)
+    - echo "$STAGING_SSH_KEY" | ssh-add -
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - ssh-keyscan $STAGING_HOST >> ~/.ssh/known_hosts
+  script:
+    - ssh deploy@$STAGING_HOST "
+        docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA &&
+        docker stop laravel-app || true &&
+        docker run -d --rm --name laravel-app
+          -e APP_ENV=staging
+          -e APP_KEY=$APP_KEY
+          -e DB_HOST=$DB_HOST
+          -p 9000:9000
+          $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA &&
+        docker exec laravel-app php artisan migrate --force &&
+        docker exec laravel-app php artisan config:cache &&
+        docker exec laravel-app php artisan route:cache"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+deploy-prod:
+  stage: deploy
+  <<: *deploy_base
+  needs: ["deploy-staging"]
+  environment:
+    name: production
+    url: https://app.example.com
+  before_script:
+    - apk add --no-cache openssh-client curl
+    - eval $(ssh-agent -s)
+    - echo "$PROD_SSH_KEY" | ssh-add -
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - ssh-keyscan $PROD_HOST >> ~/.ssh/known_hosts
+  script:
+    - ssh deploy@$PROD_HOST "
+        php artisan down --retry=60 &&
+        docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA &&
+        docker stop laravel-app || true &&
+        docker run -d --rm --name laravel-app
+          -e APP_ENV=production
+          -e APP_KEY=$APP_KEY
+          -e DB_HOST=$PROD_DB_HOST
+          -p 9000:9000
+          $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA &&
+        docker exec laravel-app php artisan migrate --force &&
+        docker exec laravel-app php artisan config:cache &&
+        docker exec laravel-app php artisan route:cache &&
+        docker exec laravel-app php artisan view:cache &&
+        php artisan up"
+  when: manual
+  allow_failure: false
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
