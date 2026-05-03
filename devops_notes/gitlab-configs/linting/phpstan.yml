@@ -1,0 +1,15 @@
+phpstan:
+  stage: lint
+  image: php:8.3-cli
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install --no-interaction --prefer-dist
+  script:
+    - ./vendor/bin/phpstan analyse app tests
+        --level=6
+        --memory-limit=512M
+  cache:
+    key: composer-$CI_COMMIT_REF_SLUG
+    paths:
+      - vendor/
+  allow_failure: true
