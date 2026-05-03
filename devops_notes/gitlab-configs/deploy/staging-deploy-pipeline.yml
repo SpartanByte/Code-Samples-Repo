@@ -1,0 +1,31 @@
+# Automatic on main branch commits - deploy to staging
+# Required CI/CD variables = STAGING_SSH_KEY, STAGING_HOST, APP_KEY, DB_HOST
+# Set these in Settings → CI/CD → Variables. Mark secrets (SSH keys, APP_KEY) as Masked and Protected.
+deploy-staging:
+  stage: deploy
+  image: alpine:3
+  needs: ["docker-build"]
+  environment:
+    name: staging
+    url: https://staging.example.com
+  before_script:
+    - apk add --no-cache openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$STAGING_SSH_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - ssh-keyscan $STAGING_HOST >> ~/.ssh/known_hosts
+  script:
+    - ssh deploy@$STAGING_HOST "
+        docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA &&
+        docker stop laravel-app || true &&
+        docker run -d --rm --name laravel-app
+          -e APP_ENV=staging
+          -e APP_KEY=$APP_KEY
+          -e DB_HOST=$DB_HOST
+          -p 9000:9000
+          $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA &&
+        docker exec laravel-app php artisan migrate --force &&
+        docker exec laravel-app php artisan config:cache &&
+        docker exec laravel-app php artisan route:cache"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

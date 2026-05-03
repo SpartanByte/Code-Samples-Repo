@@ -1,0 +1,16 @@
+# Required CI/CD variables = APP_KEY
+# Set these in Settings → CI/CD → Variables. Mark secrets (SSH keys, APP_KEY) as Masked and Protected.
+# This pipeline runs Rector in dry-run mode to check for potential code issues and deprecations. It allows failures so it won't block the pipeline, but it provides
+rector:
+  stage: security
+  image: php:8.3-cli
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install --no-interaction --prefer-dist
+  script:
+    - ./vendor/bin/rector process --dry-run
+  allow_failure: true
+  cache:
+    key: composer-$CI_COMMIT_REF_SLUG
+    paths:
+      - vendor/

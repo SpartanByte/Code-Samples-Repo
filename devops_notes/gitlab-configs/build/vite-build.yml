@@ -1,0 +1,21 @@
+# GitLab CI configuration for Vite build
+# ============================================================
+# This job runs the Vite build process to compile frontend assets.
+# It is triggered on merge requests and commits to the main branch.
+vite-build:
+  stage: build
+  image: node:20-alpine
+  before_script:
+    - npm ci --prefer-offline
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - public/build/
+    expire_in: 1 day
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/

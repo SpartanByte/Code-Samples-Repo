@@ -1,0 +1,19 @@
+# GitLab CI configuration for Laravel Pint linting
+# ============================================================
+# This job runs Laravel Pint to check code style and formatting.
+# It is triggered on merge requests and commits to the main branch.
+pint:
+  stage: lint
+  image: php:8.3-cli
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install --no-interaction --prefer-dist
+  script:
+    - ./vendor/bin/pint --test
+  cache:
+    key: composer-$CI_COMMIT_REF_SLUG
+    paths:
+      - vendor/
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

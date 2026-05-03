@@ -1,0 +1,40 @@
+# Required CI/CD variables = APP_KEY
+# Set these in Settings → CI/CD → Variables. Mark secrets (SSH keys, APP_KEY) as Masked and Protected.
+# This pipeline runs PHPUnit tests in a MySQL-backed environment. It generates code coverage reports in Cobertura format, which GitLab can display in the UI.
+phpunit:
+  stage: test
+  image: php:8.3-cli
+  services:
+    - mysql:8.0
+  variables:
+    MYSQL_ROOT_PASSWORD: secret
+    MYSQL_DATABASE: laravel_test
+    DB_HOST: mysql
+    DB_DATABASE: laravel_test
+    DB_USERNAME: root
+    DB_PASSWORD: secret
+    APP_ENV: testing
+    APP_KEY: base64:testkey000000000000000000000000=
+  before_script:
+    - apt-get update -q && apt-get install -qy
+        libzip-dev libpng-dev
+    - docker-php-ext-install pdo_mysql zip gd
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install --no-interaction --prefer-dist
+    - cp .env.example .env.testing
+    - php artisan key:generate --env=testing
+    - php artisan migrate --env=testing --force
+  script:
+    - ./vendor/bin/phpunit
+        --coverage-text
+        --coverage-clover=coverage.xml
+  coverage: '/Lines:s+(d+.d+)%/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura # Cobertura XML for coverage reports
+        path: coverage.xml
+  cache:
+    key: composer-$CI_COMMIT_REF_SLUG
+    paths:
+      - vendor/
