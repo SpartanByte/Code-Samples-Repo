@@ -1,4 +1,9 @@
-// Import the required OpenAI library
+/**
+ * Note: Make sure to install the OpenAI library using npm or yarn before running this code
+ * Create an .env file in the root of your project and add your OpenAI API key
+ * https://developers.openai.com/api/docs
+ * 
+ */
 import OpenAI from 'openai';
 
 // Initialize the OpenAI client
@@ -7,8 +12,8 @@ const openai = new OpenAI({
 });
 
 async function main() {
-  // TODO: Change the prompt to ask for a fun fact instead of a joke
-  const prompt = "Hi, can you tell me a joke?";
+  // Test prompt such as a fun fact, a joke, or a question to the AI
+  const prompt = "Hi, can you tell me a fun fact?";
 
   try {
     // Create a chat completion request to get the AI response
@@ -17,7 +22,11 @@ async function main() {
       messages: [{ role: "user", content: prompt }],
       n: 3, // Request 3 different responses, optional
     });
-    // Note: for questions that involve more reasoning, the o3-mini model is better than gpt-4.
+    /**
+     * Note: for questions that involve more reasoning, the o3-mini model is better than gpt-4.
+     * Make sure to check the OpenAI documentation for more details on the o3-mini model and its capabilities.
+     * https://developers.openai.com/api/docs/models/o3-mini
+     */
 
     response.choices.forEach(choice => {
         console.log("Response ", choice.index+1); // Log the index of the response, index from the n parameter + 1
